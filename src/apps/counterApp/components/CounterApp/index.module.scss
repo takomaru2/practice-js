@@ -1,0 +1,36 @@
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.buttonFlex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.boardWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board {
+  width: 100%;
+  height: auto;
+}
+
+.counter {
+  position: absolute;
+  top: 10%;
+  left: 17%;
+  transform: translate(-50%, 0);
+  font-size: 14vw;
+
+  font-weight: bold;
+  opacity: 60%;
+  font-family: fantasy;
+  color: white;
+  text-shadow: 2px 2px 2px beige;
+}
