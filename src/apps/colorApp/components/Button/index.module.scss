@@ -1,36 +1,9 @@
 .button {
   font-weight: bold;
   width: calc(100% / 3);
-  //transition: 1s background-color ease-in-out;
+  transition: 0.2s background-color ease-in-out;
 }
 .button:hover {
   color: white;
-}
-
-.redButton:hover {
-  background-color: #e74c3c;
-}
-.blueButton:hover {
-  background-color: #3498db;
-}
-.yellowButton:hover {
-  background-color: #f1c40f;
-}
-.purpleButton:hover {
-  background-color: #9b59b6;
-}
-.greenButton:hover {
-  background-color: #2ecc71;
-}
-.orangeButton:hover {
-  background-color: #e67e22;
-}
-.pinkButton:hover {
-  background-color: #ff69b4;
-}
-.grayButton:hover {
-  background-color: #95a5a6;
-}
-.cyanButton:hover {
-  background-color: #1abc9c;
+  background-color: var(--bg-color);
 }

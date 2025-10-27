@@ -1,17 +1,21 @@
 import { Button } from "../Button/index.jsx";
 import styles from "./index.module.scss";
 import { useState } from "react";
-import { colors } from "../utils/colors.js";
+import { colors } from "../../constants/colors.js";
 
 export const ColorApp = () => {
   const [borderColor, setBorderColor] = useState("red");
   const handleClick = (clickedColor) => {
-    //押したらborderがその色に変わる。新しいクラスつける
     setBorderColor(clickedColor);
   };
 
   return (
-    <div className={`${styles.wrapper} ${styles[borderColor]}`}>
+    <div
+      className={styles.wrapper}
+      style={{
+        borderColor: getColor(colors, borderColor),
+      }}
+    >
       {colors.map(({ name, code }) => (
         <Button
           key={name}
@@ -22,4 +26,13 @@ export const ColorApp = () => {
       ))}
     </div>
   );
+};
+
+const getColor = (colors, name) => {
+  for (let i = 0; i < colors.length; i++) {
+    const obj = colors[i];
+    if (obj.name === name) {
+      return obj.code;
+    }
+  }
 };
