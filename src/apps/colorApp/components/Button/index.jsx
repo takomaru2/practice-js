@@ -1,18 +1,14 @@
 import styles from "./index.module.scss";
 
-export const Button = ({ color, colorCode, handleClick }) => {
-  const shot = () => {
-    handleClick(color);
-  };
-
+export const Button = ({ colorName, colorCode, onClick }) => {
   return (
     <button
-      onClick={shot}
+      onClick={onClick}
       className={styles.button}
       style={{ "--bg-color": colorCode }}
     >
-      <p>{color}</p>
-      <p>{colorCode}</p>
+      <div>{colorName}</div>
+      <div>{colorCode}</div>
     </button>
   );
 };

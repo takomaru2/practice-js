@@ -1,38 +1,33 @@
 import { Button } from "../Button/index.jsx";
 import styles from "./index.module.scss";
 import { useState } from "react";
-import { colors } from "../../constants/colors.js";
+import { COLORS } from "../../constants/colors.js";
 
 export const ColorApp = () => {
-  const [borderColor, setBorderColor] = useState("red");
-  const handleClick = (clickedColor) => {
-    setBorderColor(clickedColor);
-  };
+  const [selectedColorName, setSelectedColorName] = useState("red");
 
   return (
     <div
       className={styles.wrapper}
       style={{
-        borderColor: getColor(colors, borderColor),
+        borderColor: findColorCode(COLORS, selectedColorName),
       }}
     >
-      {colors.map(({ name, code }) => (
+      {COLORS.map((color) => (
         <Button
-          key={name}
-          color={name}
-          colorCode={code}
-          handleClick={handleClick}
+          key={color.name}
+          colorName={color.name}
+          colorCode={color.code}
+          onClick={() => {
+            setSelectedColorName(color.name);
+          }}
         />
       ))}
     </div>
   );
 };
 
-const getColor = (colors, name) => {
-  for (let i = 0; i < colors.length; i++) {
-    const obj = colors[i];
-    if (obj.name === name) {
-      return obj.code;
-    }
-  }
+const findColorCode = (colors, name) => {
+  const found = colors.find((color) => color.name === name);
+  return found?.code;
 };
