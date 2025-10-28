@@ -1,4 +1,4 @@
-import { Button } from "../Button/index.jsx";
+import { ColorButton } from "../ColorButton/index.jsx";
 import styles from "./index.module.scss";
 import { useState } from "react";
 import { COLORS } from "../../constants/colors.js";
@@ -14,7 +14,7 @@ export const ColorApp = () => {
       }}
     >
       {COLORS.map((color) => (
-        <Button
+        <ColorButton
           key={color.name}
           colorName={color.name}
           colorCode={color.code}

@@ -1,11 +1,11 @@
 import styles from "./index.module.scss";
 
-export const Button = ({ colorName, colorCode, onClick }) => {
+export const ColorButton = ({ colorName, colorCode, onClick }) => {
   return (
     <button
       onClick={onClick}
       className={styles.button}
-      style={{ "--bg-color": colorCode }}
+      style={{ "--hover-bg-color": colorCode }}
     >
       <div>{colorName}</div>
       <div>{colorCode}</div>
