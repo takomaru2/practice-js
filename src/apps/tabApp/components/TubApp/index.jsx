@@ -7,7 +7,7 @@ export const TabApp = () => {
   const message = { hoge: "ああああ", fuga: "っっっい", piyo: "にににい" };
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.tabContent}>{state}</div>
       <div className={styles.buttonNav}>
         <BottomTabButton
