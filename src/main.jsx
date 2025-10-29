@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { CounterApp } from "./apps/counterApp/components/CounterApp";
-import { TabApp } from "./apps/tabApp/components/TubApp/index.jsx";
+import { TabApp } from "./apps/tabApp/components/TabApp/index.jsx";
 import "ress";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { TableOfContentsPage } from "./TableOfContentsRouter.jsx";

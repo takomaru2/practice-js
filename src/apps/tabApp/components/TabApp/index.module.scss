@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  max-width: 800px;
   margin-inline: auto;
-  width: 800px;
 }
 
 .tabContent {
@@ -14,6 +14,4 @@
 
 .tabGroup {
   display: flex;
-  bottom: 0;
-  width: 100%;
 }

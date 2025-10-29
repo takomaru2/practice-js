@@ -1,6 +1,15 @@
+@import "../../../../styles/mixin.module.scss";
+
 .container {
   width: 100%;
   padding: 40px;
+  display: flex;
+  justify-content: center;
+
+  @include sp {
+    padding: 20px;
+    flex-direction: column;
+  }
 }
 
 .label {
