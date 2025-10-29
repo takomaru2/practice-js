@@ -4,6 +4,7 @@
   width: 100%;
   padding: 40px;
   display: flex;
+  gap: 10px;
   justify-content: center;
 
   @include sp {
@@ -12,6 +13,10 @@
   }
 }
 
-.label {
+.normalLabel {
   color: gray;
+}
+
+.activeLabel {
+  color: blue;
 }

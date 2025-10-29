@@ -10,12 +10,13 @@ export const TabApp = () => {
       <div className={styles.tabContent}>{selectedMessage}</div>
       <div className={styles.tabGroup}>
         <TabButton
-          // todo iconはimportして使いたい。文字化けの可能性があるので
+          // todo: iconはimportして使いたい。文字化けの可能性があるので
           icon="🏠"
-          label="ホーム"
+          label={"ホーム"}
           onClick={() => {
             setSelectedMessage(MESSAGES.home);
           }}
+          isActive={selectedMessage === MESSAGES.home}
         />
         <TabButton
           icon="🔍"
@@ -23,6 +24,7 @@ export const TabApp = () => {
           onClick={() => {
             setSelectedMessage(MESSAGES.search);
           }}
+          isActive={selectedMessage === MESSAGES.search}
         />
         <TabButton
           icon="🔔"
@@ -30,6 +32,7 @@ export const TabApp = () => {
           onClick={() => {
             setSelectedMessage(MESSAGES.notification);
           }}
+          isActive={selectedMessage === MESSAGES.notification}
         />
       </div>
     </div>
