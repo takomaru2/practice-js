@@ -6,8 +6,13 @@ export const TabButton = (props) => {
     aaa = styles.activeLabel;
   }
 
+  let bbb = styles.normalContainer;
+  if (props.isActive === true) {
+    bbb = styles.activeContainer;
+  }
+
   return (
-    <button className={styles.container} onClick={props.onClick}>
+    <button className={bbb} onClick={props.onClick}>
       <span>{props.icon}</span>
       <span className={aaa}>{props.label}</span>
     </button>

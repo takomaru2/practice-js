@@ -1,11 +1,25 @@
 @import "../../../../styles/mixin.module.scss";
 
-.container {
+.normalContainer {
   width: 100%;
   padding: 40px;
   display: flex;
   gap: 10px;
   justify-content: center;
+
+  @include sp {
+    padding: 20px;
+    flex-direction: column;
+  }
+}
+
+.activeContainer {
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  border-bottom: blue solid 3px;
 
   @include sp {
     padding: 20px;
