@@ -1,34 +1,34 @@
-import { BottomTabButton } from "../BottomTabButton/index.jsx";
+import { TabButton } from "../TabButton/index.jsx";
 import styles from "./index.module.scss";
 import { useState } from "react";
+import { MESSAGES } from "../../constants/index.js";
 export const TabApp = () => {
-  const [state, setState] = useState("ああああ");
-
-  const message = { hoge: "ああああ", fuga: "っっっい", piyo: "にににい" };
+  const [selectedMessage, setSelectedMessage] = useState(MESSAGES.home);
 
   return (
     <div className={styles.container}>
-      <div className={styles.tabContent}>{state}</div>
-      <div className={styles.buttonNav}>
-        <BottomTabButton
+      <div className={styles.tabContent}>{selectedMessage}</div>
+      <div className={styles.tabGroup}>
+        <TabButton
+          // todo iconはimportして使いたい。文字化けの可能性があるので
           icon="🏠"
-          name="ホーム"
+          label="ホーム"
           onClick={() => {
-            setState(message.hoge);
+            setSelectedMessage(MESSAGES.home);
           }}
         />
-        <BottomTabButton
+        <TabButton
           icon="🔍"
-          name="検索"
+          label="検索"
           onClick={() => {
-            setState(message.fuga);
+            setSelectedMessage(MESSAGES.search);
           }}
         />
-        <BottomTabButton
+        <TabButton
           icon="🔔"
-          name="通知"
+          label="通知"
           onClick={() => {
-            setState(message.piyo);
+            setSelectedMessage(MESSAGES.notification);
           }}
         />
       </div>
