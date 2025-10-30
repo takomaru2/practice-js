@@ -1,13 +1,14 @@
 import styles from "./index.module.scss";
 
 export const TabButton = (props) => {
+  // todo: スタイルを動的にするためにif文でクラス名を出し分ける実装だがこれで良いのか。良いのならばrefactorする
   let aaa = styles.normalLabel;
-  if (props.isActive === true) {
+  if (props.isSelected === true) {
     aaa = styles.activeLabel;
   }
 
   let bbb = styles.normalContainer;
-  if (props.isActive === true) {
+  if (props.isSelected === true) {
     bbb = styles.activeContainer;
   }
 
