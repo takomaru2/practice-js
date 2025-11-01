@@ -1,7 +1,7 @@
 import { TabButton } from "../TabButton/index.jsx";
 import styles from "./index.module.scss";
 import { useState } from "react";
-import { MESSAGES, TAB_NAME } from "../../constants/index.js";
+import { MESSAGES, TAB_NAME, TABS } from "../../constants/index.js";
 
 export const TabApp = () => {
   const [selectedTab, setSelectedTab] = useState(TAB_NAME.HOME);
@@ -10,30 +10,17 @@ export const TabApp = () => {
     <div className={styles.container}>
       <div className={styles.tabContent}>{MESSAGES[selectedTab]}</div>
       <div className={styles.tabGroup}>
-        <TabButton
-          icon="🏠"
-          label={"ホーム"}
-          onClick={() => {
-            setSelectedTab(TAB_NAME.HOME);
-          }}
-          isSelected={selectedTab === TAB_NAME.HOME}
-        />
-        <TabButton
-          icon="🔍"
-          label="検索"
-          onClick={() => {
-            setSelectedTab(TAB_NAME.SEARCH);
-          }}
-          isSelected={selectedTab === TAB_NAME.SEARCH}
-        />
-        <TabButton
-          icon="🔔"
-          label="通知"
-          onClick={() => {
-            setSelectedTab(TAB_NAME.NOTIFICATION);
-          }}
-          isSelected={selectedTab === TAB_NAME.NOTIFICATION}
-        />
+        {TABS.map((tab) => (
+          <TabButton
+            key={tab.tabName}
+            icon={tab.icon}
+            label={tab.label}
+            onClick={() => {
+              setSelectedTab(tab.tabName);
+            }}
+            isSelected={selectedTab === tab.tabName}
+          />
+        ))}
       </div>
     </div>
   );

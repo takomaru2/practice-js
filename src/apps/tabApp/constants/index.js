@@ -10,3 +10,21 @@ export const TAB_NAME = {
   SEARCH: "search",
   NOTIFICATION: "notification",
 };
+
+export const TABS = [
+  {
+    icon: "🏠",
+    label: "ホーム",
+    tabName: "home",
+  },
+  {
+    icon: "🔍",
+    label: "検索",
+    tabName: "search",
+  },
+  {
+    icon: "🔔",
+    label: "通知",
+    tabName: "notification",
+  },
+];
