@@ -10,17 +10,19 @@ export const TabApp = () => {
     <div className={styles.container}>
       <div className={styles.tabContent}>{MESSAGES[selectedTab]}</div>
       <div className={styles.tabGroup}>
-        {TABS.map((tab) => (
-          <TabButton
-            key={tab.tabName}
-            icon={tab.icon}
-            label={tab.label}
-            onClick={() => {
-              setSelectedTab(tab.tabName);
-            }}
-            isSelected={selectedTab === tab.tabName}
-          />
-        ))}
+        {TABS.map((tab) => {
+          return (
+            <TabButton
+              key={tab.tabName}
+              icon={tab.icon}
+              label={tab.label}
+              onClick={() => {
+                setSelectedTab(tab.tabName);
+              }}
+              isSelected={selectedTab === tab.tabName}
+            />
+          );
+        })}
       </div>
     </div>
   );
