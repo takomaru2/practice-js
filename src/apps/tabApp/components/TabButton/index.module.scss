@@ -1,36 +1,20 @@
 @import "../../../../styles/mixin.module.scss";
 
-.normalContainer {
+.container {
   width: 100%;
   padding: 40px;
   display: flex;
   gap: 10px;
   justify-content: center;
-
-  @include sp {
-    padding: 20px;
-    flex-direction: column;
-  }
-}
-
-.activeContainer {
-  width: 100%;
-  padding: 40px;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  border-bottom: blue solid 3px;
-
-  @include sp {
-    padding: 20px;
-    flex-direction: column;
-  }
-}
-
-.normalLabel {
   color: gray;
-}
 
-.activeLabel {
-  color: blue;
+  @include sp {
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  &.active {
+    color: blue;
+    border-bottom: blue solid 3px;
+  }
 }

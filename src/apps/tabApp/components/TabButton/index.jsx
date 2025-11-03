@@ -5,18 +5,12 @@ export const TabButton = (props) => {
   // A.良い。今回は「選択されている」か「選択されていない」かの2状態しかないため。
   // 例えば色の種類ごとにstateがあるcolor-appのような場合は、この方法はDRYでなく不適。
 
-  const getLabelClass = () => {
-    return props.isSelected ? styles.activeLabel : styles.normalLabel;
-  };
-
-  const getContainerClass = () => {
-    return props.isSelected ? styles.activeContainer : styles.normalContainer;
-  };
+  const getButtonClassName = `${styles.container} ${props.isSelected ? styles.active : ""}`;
 
   return (
-    <button className={getContainerClass()} onClick={props.onClick}>
+    <button className={getButtonClassName} onClick={props.onClick}>
       <span>{props.icon}</span>
-      <span className={getLabelClass()}>{props.label}</span>
+      <span> {props.label}</span>
     </button>
   );
 };
