@@ -1,0 +1,10 @@
+.button {
+  font-weight: bold;
+  width: calc(100% / 3);
+  transition: 0.2s background-color ease-in-out;
+
+  &:hover {
+    color: white;
+    background-color: var(--hover-bg-color);
+  }
+}
