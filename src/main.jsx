@@ -1,6 +1,6 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { CounterApp } from "./apps/counterApp/components/CounterApp";
+import { TabApp } from "./apps/tabApp/components/TabApp/index.jsx";
 import "ress";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { TableOfContentsPage } from "./TableOfContentsRouter.jsx";
@@ -12,6 +12,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="/" element={<TableOfContentsPage />} />
       <Route path="/counter-app" element={<CounterApp />} />
       <Route path="/color-app" element={<ColorApp />} />
+      <Route path="/tab-app" element={<TabApp />} />
     </Routes>
   </BrowserRouter>,
 );
