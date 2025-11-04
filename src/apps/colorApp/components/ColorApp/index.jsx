@@ -6,20 +6,21 @@ import { COLORS } from "../../constants/colors.js";
 export const ColorApp = () => {
   const [selectedColorName, setSelectedColorName] = useState("red");
 
+  console.log(Object.keys(COLORS));
   return (
     <div
       className={styles.wrapper}
       style={{
-        borderColor: findColorCode(COLORS, selectedColorName),
+        borderColor: COLORS[selectedColorName],
       }}
     >
-      {COLORS.map((color) => (
+      {Object.keys(COLORS).map((name) => (
         <ColorButton
-          key={color.name}
-          colorName={color.name}
-          colorCode={color.code}
+          key={name}
+          colorName={name}
+          colorCode={COLORS[name]}
           onClick={() => {
-            setSelectedColorName(color.name);
+            setSelectedColorName(name);
           }}
         />
       ))}
@@ -27,7 +28,19 @@ export const ColorApp = () => {
   );
 };
 
-const findColorCode = (colors, name) => {
-  const found = colors.find((color) => color.name === name);
-  return found?.code;
-};
+// const findColorCode = (colors, name) => {
+//   const found = colors.find((color) => color.name === name);
+//
+//   return found?.code;
+// };
+
+//Optional chaining演算子（?.）は左辺のオペランドがnullish（nullまたはundefined）の場合は、それ以上評価せずにundefinedを返します。一方で、プロパティが存在する場合は、そのプロパティの評価結果を返します。
+
+// const findColorCode = (colors, name) => {
+//   const found = colors.find((color) => color.name === name);
+//   if (found) {
+//     return found.code;
+//   } else {
+//     return undefined;
+//   }
+// };
