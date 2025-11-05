@@ -5,7 +5,7 @@ import "ress";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { TableOfContentsPage } from "./TableOfContentsRouter.jsx";
 import { ColorApp } from "./apps/colorApp/components/ColorApp/index.jsx";
-import { ToggleApp } from "./apps/toggle-app/components/ToggleApp/index.jsx";
+import { ToggleApp } from "./apps/toggleApp/components/ToggleApp/index.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>

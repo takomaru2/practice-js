@@ -4,7 +4,7 @@ const pages = [
   { path: "/counter-app", name: "カウンターアプリ" },
   { path: "/color-app", name: "カラーアプリ" },
   { path: "/tab-app", name: "ボトムタブ" },
-  { path: "/toggle-app", name: "トグルスイッチ" },
+  { path: "/toggleApp", name: "トグルスイッチ" },
 ];
 
 export const TableOfContentsPage = () => {
