@@ -2,18 +2,18 @@ import styles from "./index.module.scss";
 import { useState } from "react";
 
 export const ToggleApp = () => {
-  const [isOn, setIsOn] = useState(true);
+  const [isOn, setIsOn] = useState(false);
 
   const handleClick = () => {
     setIsOn(!isOn);
   };
 
   const hoge = () => {
-    return isOn ? styles.switch : styles.switchActive;
+    return isOn ? styles.switchActive : styles.switch;
   };
 
   const fuga = () => {
-    return isOn ? styles.slider : styles.sliderActive;
+    return isOn ? styles.sliderActive : styles.slider;
   };
 
   return (
@@ -22,7 +22,7 @@ export const ToggleApp = () => {
         <button className={hoge()} onClick={handleClick}>
           <span className={fuga()}></span>
         </button>
-        <div>{isOn ? "off" : "on"}</div>
+        <div>{isOn ? "on" : "off"}</div>
       </div>
     </div>
   );
