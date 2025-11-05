@@ -8,19 +8,16 @@ export const ToggleApp = () => {
     setIsOn(!isOn);
   };
 
-  const hoge = () => {
-    return isOn ? styles.switchActive : styles.switch;
-  };
-
-  const fuga = () => {
-    return isOn ? styles.sliderActive : styles.slider;
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.switchWrapper}>
-        <button className={hoge()} onClick={handleClick}>
-          <span className={fuga()}></span>
+        <button
+          className={`${styles.switch} ${isOn ? styles.active : ""}`}
+          onClick={handleClick}
+        >
+          <span
+            className={`${styles.slider} ${isOn ? styles.active : ""}`}
+          ></span>
         </button>
         <div>{isOn ? "on" : "off"}</div>
       </div>

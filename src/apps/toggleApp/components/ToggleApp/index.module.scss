@@ -17,15 +17,10 @@
   border-radius: 20px;
   position: relative;
   transition: 0.3s;
-}
 
-.switchActive {
-  width: 80px;
-  height: 40px;
-  background-color: #4caf50;
-  border-radius: 20px;
-  position: relative;
-  transition: 0.3s;
+  &.active {
+    background-color: #4caf50;
+  }
 }
 
 .slider {
@@ -38,16 +33,8 @@
   top: 5px;
   left: 5px;
   transition: 0.3s;
-}
 
-.sliderActive {
-  display: block;
-  width: 30px;
-  height: 30px;
-  background-color: #fff;
-  border-radius: 20px;
-  position: absolute;
-  top: 5px;
-  left: 45px;
-  transition: 0.3s;
+  &.active {
+    left: 45px;
+  }
 }
