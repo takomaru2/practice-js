@@ -5,11 +5,7 @@ export const ToggleApp = () => {
   const [isOn, setIsOn] = useState(true);
 
   const handleClick = () => {
-    if (isOn) {
-      setIsOn(false);
-    } else {
-      setIsOn(true);
-    }
+    setIsOn(!isOn);
   };
 
   const hoge = () => {
