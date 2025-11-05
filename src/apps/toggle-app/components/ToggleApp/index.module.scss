@@ -16,14 +16,16 @@
   background-color: #ccc;
   border-radius: 20px;
   position: relative;
+  transition: 0.3s;
 }
 
 .switchActive {
   width: 80px;
   height: 40px;
-  background-color: green;
+  background-color: #4caf50;
   border-radius: 20px;
   position: relative;
+  transition: 0.3s;
 }
 
 .slider {
@@ -35,6 +37,7 @@
   position: absolute;
   top: 10px;
   left: 5px;
+  transition: 0.3s;
 }
 
 .sliderActive {
@@ -46,4 +49,5 @@
   position: absolute;
   top: 10px;
   left: 50px;
+  transition: 0.3s;
 }

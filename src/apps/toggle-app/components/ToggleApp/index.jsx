@@ -2,7 +2,7 @@ import styles from "./index.module.scss";
 import { useState } from "react";
 
 export const ToggleApp = () => {
-  const [isOn, setIsOn] = useState(false);
+  const [isOn, setIsOn] = useState(true);
 
   const handleClick = () => {
     if (isOn) {
@@ -12,13 +12,21 @@ export const ToggleApp = () => {
     }
   };
 
+  const hoge = () => {
+    return isOn ? styles.switch : styles.switchActive;
+  };
+
+  const fuga = () => {
+    return isOn ? styles.slider : styles.sliderActive;
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.switchWrapper}>
-        <button className={styles.switch} onClick={handleClick}>
-          <span className={styles.slider}></span>
+        <button className={hoge()} onClick={handleClick}>
+          <span className={fuga()}></span>
         </button>
-        <div>{isOn ? "on" : "off"}</div>
+        <div>{isOn ? "off" : "on"}</div>
       </div>
     </div>
   );
