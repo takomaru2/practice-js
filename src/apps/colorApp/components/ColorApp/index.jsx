@@ -10,24 +10,19 @@ export const ColorApp = () => {
     <div
       className={styles.wrapper}
       style={{
-        borderColor: findColorCode(COLORS, selectedColorName),
+        borderColor: COLORS[selectedColorName],
       }}
     >
-      {COLORS.map((color) => (
+      {Object.keys(COLORS).map((name) => (
         <ColorButton
-          key={color.name}
-          colorName={color.name}
-          colorCode={color.code}
+          key={name}
+          colorName={name}
+          colorCode={COLORS[name]}
           onClick={() => {
-            setSelectedColorName(color.name);
+            setSelectedColorName(name);
           }}
         />
       ))}
     </div>
   );
-};
-
-const findColorCode = (colors, name) => {
-  const found = colors.find((color) => color.name === name);
-  return found?.code;
 };
