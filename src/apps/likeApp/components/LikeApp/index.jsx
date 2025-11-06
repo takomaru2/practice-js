@@ -4,7 +4,7 @@ import { useState } from "react";
 export const LikeApp = () => {
   const [count, setCount] = useState(0);
 
-  const handleClick = () => {
+  const handleLike = () => {
     setCount(count + 1);
   };
 
@@ -14,11 +14,11 @@ export const LikeApp = () => {
 
   return (
     <div className={styles.container}>
-      <button className={styles.like} onClick={handleClick}>
+      <button className={styles.likeButton} onClick={handleLike}>
         ♥ いいねっ
       </button>
       <span className={styles.counter}>{count}</span>
-      <button className={styles.reset} onClick={handleReset}>
+      <button className={styles.resetButton} onClick={handleReset}>
         リセッツ
       </button>
     </div>
