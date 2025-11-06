@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import styles from "./index.module.scss";
 
 const pages = [
   { path: "/counter-app", name: "カウンターアプリ" },
@@ -8,12 +9,20 @@ const pages = [
 
 export const TableOfContentsPage = () => {
   return (
-    <ul>
-      {pages.map((page) => (
-        <li key={page.path}>
-          <Link to={page.path}>{page.name}</Link>
-        </li>
-      ))}
-    </ul>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Practice App</h1>
+      <div>
+        <h2 className={styles.subTitle}>初級 ⭐︎</h2>
+        <ul className={styles.listWrapper}>
+          {pages.map((page) => (
+            <li key={page.path}>
+              <Link className={styles.list} to={page.path}>
+                {page.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 };
