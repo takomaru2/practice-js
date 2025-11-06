@@ -15,9 +15,7 @@ export const ToggleApp = () => {
           className={`${styles.switch} ${isOn ? styles.active : ""}`}
           onClick={handleClick}
         >
-          <span
-            className={`${styles.slider} ${isOn ? styles.active : ""}`}
-          ></span>
+          <span className={`${styles.slider} ${isOn ? styles.active : ""}`} />
         </button>
         <div>{isOn ? "on" : "off"}</div>
       </div>
