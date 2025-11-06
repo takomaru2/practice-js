@@ -1,0 +1,40 @@
+.container {
+  padding: 20px;
+  margin: 20px;
+}
+
+.switchWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.switch {
+  width: 80px;
+  height: 40px;
+  background-color: #ccc;
+  border-radius: 20px;
+  position: relative;
+  transition: 0.3s;
+
+  &.active {
+    background-color: #4caf50;
+  }
+}
+
+.slider {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 20px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  transition: 0.3s;
+
+  &.active {
+    left: 45px;
+  }
+}
