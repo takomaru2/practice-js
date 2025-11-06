@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { TableOfContentsPage } from "./TableOfContentsRouter.jsx";
 import { ColorApp } from "./apps/colorApp/components/ColorApp/index.jsx";
 import { ToggleApp } from "./apps/toggleApp/components/ToggleApp/index.jsx";
+import { LikeApp } from "./apps/likeApp/components/LikeApp/index.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="/color-app" element={<ColorApp />} />
       <Route path="/tab-app" element={<TabApp />} />
       <Route path="/toggle-app" element={<ToggleApp />} />
+      <Route path="/like-app" element={<LikeApp />} />
     </Routes>
   </BrowserRouter>,
 );
