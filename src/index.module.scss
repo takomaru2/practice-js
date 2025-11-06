@@ -7,15 +7,15 @@
   padding: 20px;
 }
 
-.title {
+.pageTitle {
   color: white;
 }
 
-.subTitle {
+.difficulty {
   color: white;
 }
 
-.listWrapper {
+.linkToAppWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +23,7 @@
   list-style: none;
 }
 
-.list {
+.linkToApp {
   color: dodgerblue;
   display: block;
   padding: 10px;
