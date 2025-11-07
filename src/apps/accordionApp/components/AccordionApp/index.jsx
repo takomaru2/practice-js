@@ -1,4 +1,5 @@
 import styles from "./index.module.scss";
+import { AccordionItem } from "../Button/index.jsx";
 
 export const AccordionApp = () => {
   return (
@@ -10,14 +11,9 @@ export const AccordionApp = () => {
       </div>
 
       <div className={styles.accordionMenu}>
-        <button className={styles.accordionItem}>
-          <span className={styles.question}>なんだとはなんですか</span>
-          <span className={styles.icon}>▼</span>
-        </button>
-        <button className={styles.accordionItem}>
-          <span className={styles.question}>なんだとはなんですか</span>
-          <span className={styles.icon}>▼</span>
-        </button>
+        <AccordionItem label={"何だとはなんですか💢"} icon={"▼"} />
+        <AccordionItem label={"何だとはなんですか💢"} icon={"▼"} />
+        <AccordionItem label={"何だとはなんですか💢"} icon={"▼"} />
       </div>
     </div>
   );
