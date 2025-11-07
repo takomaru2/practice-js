@@ -7,6 +7,7 @@ import { TableOfContentsPage } from "./TableOfContentsRouter.jsx";
 import { ColorApp } from "./apps/colorApp/components/ColorApp/index.jsx";
 import { ToggleApp } from "./apps/toggleApp/components/ToggleApp/index.jsx";
 import { LikeApp } from "./apps/likeApp/components/LikeApp/index.jsx";
+import { DarkModeApp } from "./apps/darkModeApp/component/DarkModeApp/index.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -17,6 +18,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="/tab-app" element={<TabApp />} />
       <Route path="/toggle-app" element={<ToggleApp />} />
       <Route path="/like-app" element={<LikeApp />} />
+      <Route path="/dark-mode-app" element={<DarkModeApp />} />
     </Routes>
   </BrowserRouter>,
 );
