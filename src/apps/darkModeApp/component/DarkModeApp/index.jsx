@@ -4,7 +4,7 @@ import { useState } from "react";
 export const DarkModeApp = () => {
   const [isDark, setIsDark] = useState(false);
 
-  const handle = () => {
+  const toggleColorMode = () => {
     setIsDark((prev) => {
       return !prev;
     });
@@ -13,8 +13,8 @@ export const DarkModeApp = () => {
   return (
     <div className={`${styles.content} ${isDark ? styles.contentDark : ""}`}>
       <button
-        onClick={handle}
-        className={`${styles.button} ${isDark ? styles.dark : styles.light} `}
+        onClick={toggleColorMode}
+        className={`${styles.button} ${isDark ? styles.dark : ""} `}
       >
         {isDark ? "ライトモードに切り替え" : "ダークモードに切り替え"}
       </button>
