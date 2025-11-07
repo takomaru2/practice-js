@@ -9,7 +9,7 @@ export const LikeApp = () => {
       <button className={styles.likeButton} onClick={handleLike}>
         ♥ いいねっ
       </button>
-      <span className={styles.counter}>{count}</span>
+      <span className={styles.count}>{count}</span>
       <button className={styles.resetButton} onClick={handleReset}>
         リセッツ
       </button>
