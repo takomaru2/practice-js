@@ -5,6 +5,9 @@
   justify-content: center;
   min-height: 100vh;
   background-color: white;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .contentDark {
@@ -14,6 +17,9 @@
 .button {
   padding: 12px 24px;
   border-radius: 8px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .dark {
