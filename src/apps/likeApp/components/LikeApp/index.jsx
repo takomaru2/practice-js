@@ -1,16 +1,8 @@
 import styles from "./index.module.scss";
-import { useState } from "react";
+import { useLikeCounter } from "../../hooks/index.js";
 
 export const LikeApp = () => {
-  const [count, setCount] = useState(0);
-
-  const handleLike = () => {
-    setCount(count + 1);
-  };
-
-  const handleReset = () => {
-    setCount(0);
-  };
+  const { count, handleLike, handleReset } = useLikeCounter();
 
   return (
     <div className={styles.container}>
