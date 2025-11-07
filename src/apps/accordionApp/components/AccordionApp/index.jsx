@@ -9,11 +9,8 @@ export const AccordionApp = () => {
         <button className={styles.open}>すべて開く</button>
         <button className={styles.close}>すべて閉じる</button>
       </div>
-
       <div className={styles.accordionMenu}>
-        <AccordionItem label={"何だとはなんですか💢"} icon={"▼"} />
-        <AccordionItem label={"何だとはなんですか💢"} icon={"▼"} />
-        <AccordionItem label={"何だとはなんですか💢"} icon={"▼"} />
+        <AccordionItem />
       </div>
     </div>
   );
