@@ -10,7 +10,9 @@ export const AccordionApp = () => {
         <button className={styles.close}>すべて閉じる</button>
       </div>
       <div className={styles.accordionMenu}>
-        <AccordionItem />
+        <AccordionItem question={"フシギダネ?"} answer={"草"} />
+        <AccordionItem question={"ゼニガメ?"} answer={"水"} />
+        <AccordionItem question={"ヒトカゲ?"} answer={"炎"} />
       </div>
     </div>
   );

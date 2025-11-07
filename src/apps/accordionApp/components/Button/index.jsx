@@ -1,7 +1,7 @@
 import styles from "./index.module.scss";
 import { useState } from "react";
 
-export const AccordionItem = () => {
+export const AccordionItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const hoge = () => {
@@ -9,14 +9,15 @@ export const AccordionItem = () => {
       return !prev;
     });
   };
+
   return (
     <button className={styles.accordionItem} onClick={hoge}>
       <span className={styles.question}>
-        なんだ？
+        {question}
         {isOpen && (
           <>
             <br />
-            なんだとはなんだ！💢
+            {answer}
           </>
         )}
       </span>
