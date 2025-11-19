@@ -9,20 +9,21 @@ const items = [
 ];
 
 export const AccordionApp = () => {
-  const [openStates, setOpenStates] = useState(() => items.map(() => false));
+  const [isOpenList, setIsOpenList] = useState(() => items.map(() => false));
 
   const openAll = () => {
-    return setOpenStates(items.map(() => true));
+    return setIsOpenList(items.map(() => true));
   };
 
   const closeAll = () => {
-    return setOpenStates(items.map(() => false));
+    return setIsOpenList(items.map(() => false));
   };
+
   //ここで１個１個stateを更新していくぅぅ！
-  const toggleOne = (index) => {
-    const newState = [...openStates];
+  const toggleItem = (index) => {
+    const newState = [...isOpenList];
     newState[index] = !newState[index];
-    setOpenStates(newState);
+    setIsOpenList(newState);
   };
 
   return (
@@ -42,8 +43,8 @@ export const AccordionApp = () => {
             key={item.id}
             question={item.question}
             answer={item.answer}
-            isOpen={openStates[item.id]}
-            onToggle={() => toggleOne(item.id)}
+            isOpen={isOpenList[item.id]}
+            onToggle={() => toggleItem(item.id)}
           />
         ))}
       </div>
