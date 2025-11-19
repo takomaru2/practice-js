@@ -8,13 +8,16 @@ const items = [
   { id: 3, question: "ヒトカゲ", answer: "炎🔥" },
 ];
 
-// 全開閉実装は１つずつのstateを使って全てをtrueにする
 export const AccordionApp = () => {
-  const [openStates, setOpenStates] = useState([false, false, false]);
+  const [openStates, setOpenStates] = useState(() => items.map(() => false));
 
-  const openAll = () => setOpenStates([true, true, true]);
-  const closeAll = () => setOpenStates([false, false, false]);
+  const openAll = () => {
+    return setOpenStates(items.map(() => true));
+  };
 
+  const closeAll = () => {
+    return setOpenStates(items.map(() => false));
+  };
   //ここで１個１個stateを更新していくぅぅ！
   const toggleOne = (index) => {
     const newState = [...openStates];
