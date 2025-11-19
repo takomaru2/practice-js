@@ -38,13 +38,13 @@ export const AccordionApp = () => {
         </button>
       </div>
       <div className={styles.accordionMenu}>
-        {items.map((item) => (
+        {items.map((item, index) => (
           <AccordionItem
             key={item.id}
             question={item.question}
             answer={item.answer}
-            isOpen={isOpenList[item.id]}
-            onToggle={() => toggleItem(item.id)}
+            isOpen={isOpenList[index]}
+            onToggle={() => toggleItem(index)}
           />
         ))}
       </div>
