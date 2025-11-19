@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import { AccordionItem } from "../Button/index.jsx";
+import { AccordionItem } from "../AccordionItem/index.jsx";
 import { useState } from "react";
 
 const items = [
