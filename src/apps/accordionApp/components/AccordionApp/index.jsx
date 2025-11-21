@@ -2,26 +2,26 @@ import styles from "./index.module.scss";
 import { AccordionItem } from "../AccordionItem/index.jsx";
 import { useState } from "react";
 
-const items = [
+const ITEMS = [
   { id: 1, question: "フシギダネ", answer: "草🌱" },
   { id: 2, question: "ゼニガメ", answer: "水💧" },
   { id: 3, question: "ヒトカゲ", answer: "炎🔥" },
 ];
 
 export const AccordionApp = () => {
-  // const [isOpenList, setIsOpenList] = useState(() => items.map(() => false));
+  // const [isOpenList, setIsOpenList] = useState(() => ITEMS.map(() => false));
   const [openIndex, setOpenIndex] = useState([]);
 
   // const openAll = () => {
-  //   return setIsOpenList(items.map(() => true));
+  //   return setIsOpenList(ITEMS.map(() => true));
   // };
   //
   // const closeAll = () => {
-  //   return setIsOpenList(items.map(() => false));
+  //   return setIsOpenList(ITEMS.map(() => false));
   // }
 
   const openAll = () => {
-    setOpenIndex(items.map((item, index) => index));
+    setOpenIndex(ITEMS.map((item, index) => index));
   };
 
   const closeAll = () => {
@@ -60,7 +60,7 @@ export const AccordionApp = () => {
         </button>
       </div>
       <div className={styles.accordionMenu}>
-        {items.map((item, index) => (
+        {ITEMS.map((item, index) => (
           <AccordionItem
             key={item.id}
             question={item.question}
