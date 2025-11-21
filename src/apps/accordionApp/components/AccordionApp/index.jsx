@@ -9,21 +9,43 @@ const items = [
 ];
 
 export const AccordionApp = () => {
-  const [isOpenList, setIsOpenList] = useState(() => items.map(() => false));
+  // const [isOpenList, setIsOpenList] = useState(() => items.map(() => false));
+  const [openIndex, setOpenIndex] = useState([]);
+
+  // const openAll = () => {
+  //   return setIsOpenList(items.map(() => true));
+  // };
+  //
+  // const closeAll = () => {
+  //   return setIsOpenList(items.map(() => false));
+  // }
 
   const openAll = () => {
-    return setIsOpenList(items.map(() => true));
+    setOpenIndex(items.map((item, index) => index));
   };
 
   const closeAll = () => {
-    return setIsOpenList(items.map(() => false));
+    setOpenIndex([]);
   };
 
   //ここで１個１個stateを更新していくぅぅ！
+  // const toggleItem = (index) => {
+  //   const newState = [...isOpenList];
+  //   newState[index] = !newState[index];
+  //   setIsOpenList(newState);
+  // };
+
   const toggleItem = (index) => {
-    const newState = [...isOpenList];
-    newState[index] = !newState[index];
-    setIsOpenList(newState);
+    setOpenIndex((prev) => {
+      if (prev.includes(index)) {
+        // 開いている=>閉じる
+        //閉じたいので既に空いている状態。結果prevからindexと同じものだけ消える。
+        return prev.filter((i) => i !== index);
+      } else {
+        // 閉じている=>開く
+        return [...prev, index];
+      }
+    });
   };
 
   return (
@@ -43,7 +65,9 @@ export const AccordionApp = () => {
             key={item.id}
             question={item.question}
             answer={item.answer}
-            isOpen={isOpenList[index]}
+            //todo: 初期値がbooleanじゃなくなったので結果がbooleanになるようにしたい
+            //openIndex（初期値は空配列）に現在のindexが含まれているかを調べて、その結果のtrue/falseをisOpenに渡している。(includesはbooleanで返すから最適っと)
+            isOpen={openIndex.includes(index)}
             onToggle={() => toggleItem(index)}
           />
         ))}
