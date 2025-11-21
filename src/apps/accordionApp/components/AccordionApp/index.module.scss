@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  min-height: 100vh;
+  background: linear-gradient(#4169e1, #00008b);
+}
+
+.pageTitle {
+  color: white;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.open {
+  color: white;
+  padding: 12px 24px;
+  background-color: deepskyblue;
+  border-radius: 8px;
+  border: #ccc solid 2px;
+}
+
+.close {
+  color: white;
+  padding: 12px 24px;
+  background-color: deepskyblue;
+  border-radius: 8px;
+  border: #ccc solid 2px;
+}
+
+.accordionMenu {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0 auto;
+}
