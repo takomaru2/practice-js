@@ -9,16 +9,7 @@ const ITEMS = [
 ];
 
 export const AccordionApp = () => {
-  // const [isOpenList, setIsOpenList] = useState(() => ITEMS.map(() => false));
   const [openIndex, setOpenIndex] = useState([]);
-
-  // const openAll = () => {
-  //   return setIsOpenList(ITEMS.map(() => true));
-  // };
-  //
-  // const closeAll = () => {
-  //   return setIsOpenList(ITEMS.map(() => false));
-  // }
 
   const openAll = () => {
     setOpenIndex(ITEMS.map((item, index) => index));
@@ -27,13 +18,6 @@ export const AccordionApp = () => {
   const closeAll = () => {
     setOpenIndex([]);
   };
-
-  //ここで１個１個stateを更新していくぅぅ！
-  // const toggleItem = (index) => {
-  //   const newState = [...isOpenList];
-  //   newState[index] = !newState[index];
-  //   setIsOpenList(newState);
-  // };
 
   const toggleItem = (index) => {
     setOpenIndex((prev) => {
