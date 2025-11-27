@@ -17,7 +17,9 @@ export const TextCounter = () => {
   // 次はfilterして改行文字とスペースを除外する、実際にカウントしたい文字だけ残す
   // こうしたい      ['1','\n','2'] => ['1','2']
   // 更にこうしたい   ['1',' ','2'] => ['1','2']
-  const visibleChars = chars.filter((char) => char !== "\n" && char !== " ");
+
+  const ignoreChars = ["\n", " ", "　"];
+  const visibleChars = chars.filter((char) => !ignoreChars.includes(char));
 
   // 最終的に残った文字の数を文字数カウンターに渡す！
   // こうしたい   ['1','2'] => 2
