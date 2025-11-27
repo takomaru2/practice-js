@@ -2,16 +2,11 @@ import styles from "./index.module.scss";
 import { useState } from "react";
 
 export const TextCounter = () => {
-  //テキストエリアの文字数が1文字以上だったらクリアボタンを出現させる
-
-  // テキストエリアの文字数を見ないといけない
-
   const [text, setText] = useState("");
   const isActive = text.length > 0;
 
   const lineCount = text.split("\n").length;
 
-  // todo: 2.スペースを入力した時に文字数カウントするな
   // todo: 3.０文字時は行数は０だが１文字以降は１行とカウントする
 
   // todo: 1.改行した時に文字数をカウントするな
@@ -19,13 +14,16 @@ export const TextCounter = () => {
   // こうしたい   '12a' => ['1','2','a']
   const chars = [...text];
 
-  // 次はfilterして改行文字を除外する、実際にカウントしたい文字だけ残す
-  // こうしたい   ['1','\n','2'] => ['1','2']
-  const visibleChars = chars.filter((char) => char !== "\n");
+  // 次はfilterして改行文字とスペースを除外する、実際にカウントしたい文字だけ残す
+  // こうしたい      ['1','\n','2'] => ['1','2']
+  // 更にこうしたい   ['1',' ','2'] => ['1','2']
+  const visibleChars = chars.filter((char) => char !== "\n" && char !== " ");
 
   // 最終的に残った文字の数を文字数カウンターに渡す！
   // こうしたい   ['1','2'] => 2
   const charCount = visibleChars.length;
+
+  // todo: 2.スペースを入力した時に文字数カウントするな
 
   return (
     <div className={styles.container}>
