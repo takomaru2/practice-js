@@ -10,11 +10,22 @@ export const TextCounter = () => {
   const isActive = text.length > 0;
 
   const lineCount = text.split("\n").length;
-  //文字数
-  // todo: 改行した時に文字数をカウントするな
-  // todo: スペースを入力した時に文字数カウントするな
-  //行数
-  // todo: ０文字時は行数は０だが１文字以降は１行とカウントする
+
+  // todo: 2.スペースを入力した時に文字数カウントするな
+  // todo: 3.０文字時は行数は０だが１文字以降は１行とカウントする
+
+  // todo: 1.改行した時に文字数をカウントするな
+  // 文字列を1文字ずつの配列に変換（文字列は直接filterできないんでね！）
+  // こうしたい   '12a' => ['1','2','a']
+  const chars = [...text];
+
+  // 次はfilterして改行文字を除外する、実際にカウントしたい文字だけ残す
+  // こうしたい   ['1','\n','2'] => ['1','2']
+  const visibleChars = chars.filter((char) => char !== "\n");
+
+  // 最終的に残った文字の数を文字数カウンターに渡す！
+  // こうしたい   ['1','2'] => 2
+  const charCount = visibleChars.length;
 
   return (
     <div className={styles.container}>
@@ -22,7 +33,7 @@ export const TextCounter = () => {
       <div className={styles.counterWrapper}>
         <div className={styles.counterItem}>
           <div>文字数</div>
-          <span>{text.length}</span>
+          <span>{charCount}</span>
         </div>
         <div className={styles.counterItem}>
           <div>行数</div>
