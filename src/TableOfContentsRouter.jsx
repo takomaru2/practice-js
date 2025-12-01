@@ -8,6 +8,7 @@ const pages = [
   { path: "/toggle-app", name: "トグルスイッチ" },
   { path: "/like-app", name: "いいねアプリ" },
   { path: "/dark-mode-app", name: "ダークモード" },
+  { path: "/modal-app", name: "モーダル" },
 ];
 
 export const TableOfContentsPage = () => {
