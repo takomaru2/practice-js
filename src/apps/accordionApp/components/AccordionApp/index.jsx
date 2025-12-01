@@ -49,7 +49,6 @@ export const AccordionApp = () => {
             key={item.id}
             question={item.question}
             answer={item.answer}
-            //todo: 初期値がbooleanじゃなくなったので結果がbooleanになるようにしたい
             //openIndex（初期値は空配列）に現在のindexが含まれているかを調べて、その結果のtrue/falseをisOpenに渡している。(includesはbooleanで返すから最適っと)
             isOpen={openIndex.includes(index)}
             onToggle={() => toggleItem(index)}
