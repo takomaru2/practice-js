@@ -9,6 +9,7 @@ export const TextCounter = () => {
   const calculateLineCount = (text) => {
     return text === "" ? 0 : text.split("\n").length;
   };
+
   const lineCount = calculateLineCount(text);
 
   //文字数カウントを関数化する
@@ -22,6 +23,10 @@ export const TextCounter = () => {
   };
 
   const charCount = calculateCharCount(text);
+
+  const handleClearText = () => {
+    return setText("");
+  };
 
   return (
     <div className={styles.container}>
@@ -44,7 +49,9 @@ export const TextCounter = () => {
       />
       {hasText && (
         <div className={styles.clearTextButtonWrapper}>
-          <button className={styles.clearTextButton}>全消しンゴ</button>
+          <button className={styles.clearTextButton} onClick={handleClearText}>
+            全消しンゴ
+          </button>
         </div>
       )}
     </div>
