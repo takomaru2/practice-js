@@ -3,9 +3,7 @@ import { useState } from "react";
 
 export const TextCounter = () => {
   const [text, setText] = useState("");
-  const isActive = text.length > 0;
-
-  // const lineCount = text.length === 0 ? 0 : text.split("\n").length;
+  const hasText = text.length > 0;
 
   //行数カウントを関数化する
   const calculateLineCount = (text) => {
@@ -44,9 +42,9 @@ export const TextCounter = () => {
         onChange={(event) => setText(event.target.value)}
         placeholder={"ここに書けやれい"}
       />
-      {isActive && (
-        <div className={styles.hoge}>
-          <button className={styles.clearButton}>全消しンゴ</button>
+      {hasText && (
+        <div className={styles.clearTextButtonWrapper}>
+          <button className={styles.clearTextButton}>全消しンゴ</button>
         </div>
       )}
     </div>
