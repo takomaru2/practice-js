@@ -1,6 +1,7 @@
 import styles from "./index.module.scss";
 import { Button } from "../Button/index.jsx";
 import { useState } from "react";
+import { Modal } from "../Modal/index.jsx";
 
 const BOKES = [
   { key: 1, label: "網走の人", message: "捕まってしまいました" },
@@ -27,18 +28,8 @@ export const ModalApp = () => {
           />
         ))}
       </div>
-      {/*todo: component化*/}
-      {message && (
-        <>
-          <div className={styles.backDrop}></div>
-          <div className={styles.modal}>
-            <p>{message}</p>
-            <button onClick={closeModal} className={styles.closeButton}>
-              閉じる
-            </button>
-          </div>
-        </>
-      )}
+
+      <Modal message={message} onClose={closeModal} />
     </div>
   );
 };
