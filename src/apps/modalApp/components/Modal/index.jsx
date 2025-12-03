@@ -1,4 +1,4 @@
-import styles from "../ModalApp/index.module.scss";
+import styles from "./index.module.scss";
 
 export const Modal = ({ message, onClose }) => {
   //message がないときは null を返す（非表示）
