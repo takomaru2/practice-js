@@ -3,32 +3,42 @@ import { Button } from "../Button/index.jsx";
 import { useState } from "react";
 
 export const ModalApp = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [modal, setModal] = useState({ isOpen: false, message: "" });
 
-  const showModal = () => {
-    setIsOpen(true);
-  };
+  const showModal = (message) => setModal({ isOpen: true, message });
+  const closeModal = () => setModal({ isOpen: false, message: "" });
 
-  const closeModal = () => {
-    setIsOpen(false);
-  };
+  const boke = [
+    { key: 1, label: "網走の人", message: "捕まってしまいました" },
+    { key: 2, label: "米子育ちの人", message: "ここは日本の首都さ！" },
+    { key: 3, label: "考える人", message: "んーー難しい問題だね" },
+  ];
 
   return (
     <div className={styles.aaa}>
       <h1 className={styles.hoge}>名言モーダル</h1>
       <div className={styles.buttonGroup}>
-        <Button label={"網走の人"} showModal={showModal} />
-        <Button label={"米子育ちの人"} showModal={showModal} />
-        <Button label={"考える人"} showModal={showModal} />
+        <Button
+          label={boke[0].label}
+          showModal={() => showModal(boke[0].message)}
+        />
+        <Button
+          label={boke[1].label}
+          showModal={() => showModal(boke[1].message)}
+        />
+        <Button
+          label={boke[2].label}
+          showModal={() => showModal(boke[2].message)}
+        />
       </div>
 
-      {isOpen && (
+      {modal.isOpen && (
         <>
           <div className={styles.backDrop}></div>
           <div className={styles.modal}>
-            <p>開いたああああ！！！</p>
+            <p>{modal.message}</p>
             <button onClick={closeModal} className={styles.closeButton}>
-              閉じるうううう！
+              閉じる
             </button>
           </div>
         </>
