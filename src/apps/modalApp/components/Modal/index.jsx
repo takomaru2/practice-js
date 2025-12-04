@@ -1,8 +1,15 @@
 import styles from "./index.module.scss";
 
 export const Modal = ({ onClose, selectedItem }) => {
-  //message がないときは null を返す（非表示）
-  if (!selectedItem) {
+  //message がないときはnullを返す（非表示）ようにしたいが
+  // null,undefined''（空文字）0,falseとかがあり得るので
+  //typeofを使ってみよう
+  //selectedItemの型が‘object’じゃないまたはnullの場合はreturn する
+
+  const isInvalidSelectedItem =
+    typeof selectedItem !== "object" || selectedItem === null;
+
+  if (isInvalidSelectedItem) {
     return null;
   }
   return (
