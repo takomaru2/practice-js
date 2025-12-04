@@ -2,16 +2,12 @@ import styles from "./index.module.scss";
 import { Button } from "../Button/index.jsx";
 import { useState } from "react";
 import { Modal } from "../Modal/index.jsx";
-
-const BOKES = [
-  { label: "網走の人", message: "捕まってしまいました" },
-  { label: "米子育ちの人", message: "ここは日本の首都さ！" },
-  { label: "考える人", message: "んーー難しい問題だね" },
-];
+import { MODAL_ITEMS } from "../../constants/modalItems.js";
 
 export const ModalApp = () => {
   const [message, setMessage] = useState(null);
 
+  // この関数たちは'このコンポーネントのsetMessageを使う'ので、ここに置く必要があるよねっ
   const showModal = (message) => setMessage(message);
   const closeModal = () => setMessage(null);
 
@@ -19,11 +15,12 @@ export const ModalApp = () => {
     <div className={styles.aaa}>
       <h1 className={styles.hoge}>名言モーダル</h1>
       <div className={styles.buttonGroup}>
-        {BOKES.map((boke) => (
+        {MODAL_ITEMS.map((item) => (
           <Button
-            label={boke.label}
+            key={item.id}
+            label={item.label}
             showModal={() => {
-              showModal(boke.message);
+              showModal(item.message);
             }}
           />
         ))}
