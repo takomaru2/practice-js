@@ -20,8 +20,8 @@ export const Modal = ({ onClose, quote }) => {
         <button onClick={onClose} className={styles.closeButton}>
           ×
         </button>
-        <p className={styles.modalTitle}>{quote.label}</p>
-        <p className={styles.famousQuote}>{quote.message}</p>
+        <span className={styles.modalTitle}>{quote.speaker}</span>
+        <span className={styles.famousQuote}>{quote.message}</span>
       </div>
     </>
   );

@@ -18,7 +18,7 @@ export const ModalApp = () => {
         {FAMOUS_QUOTES.map((item) => (
           <Button
             key={item.id}
-            label={item.label}
+            speaker={item.speaker}
             onClick={() => showModal(item)}
           />
         ))}
