@@ -5,11 +5,11 @@ import { Modal } from "../Modal/index.jsx";
 import { MODAL_ITEMS } from "../../constants/modalItems.js";
 
 export const ModalApp = () => {
-  const [message, setMessage] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   // この関数たちは'このコンポーネントのsetMessageを使う'ので、ここに置く必要があるよねっ
-  const showModal = (message) => setMessage(message);
-  const closeModal = () => setMessage(null);
+  const showModal = (item) => setSelectedItem(item);
+  const closeModal = () => setSelectedItem(null);
 
   return (
     <div className={styles.aaa}>
@@ -19,14 +19,12 @@ export const ModalApp = () => {
           <Button
             key={item.id}
             label={item.label}
-            showModal={() => {
-              showModal(item.message);
-            }}
+            showModal={() => showModal(item)}
           />
         ))}
       </div>
 
-      <Modal message={message} onClose={closeModal} />
+      <Modal selectedItem={selectedItem} onClose={closeModal} />
     </div>
   );
 };
