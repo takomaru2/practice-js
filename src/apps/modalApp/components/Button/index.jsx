@@ -1,8 +1,8 @@
 import styles from "./index.module.scss";
 
-export const Button = ({ label, showModal }) => {
+export const Button = ({ label, onClick }) => {
   return (
-    <button className={styles.fuga} onClick={showModal}>
+    <button className={styles.triggerButton} onClick={onClick}>
       {label}
     </button>
   );

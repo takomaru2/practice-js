@@ -1,5 +1,5 @@
 // ↓GPTよく理解してないスタイル
-.modal {
+.modalContents {
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -13,7 +13,7 @@
   border-radius: 8px;
 }
 
-.backDrop {
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -23,12 +23,12 @@
   z-index: 999;
 }
 
-.ai {
+.modalTitle {
   font-size: 30px;
   font-weight: inherit;
 }
 
-.ho {
+.famousQuote {
   font-size: 15px;
   font-weight: inherit;
 }

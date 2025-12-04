@@ -1,4 +1,4 @@
-export const MODAL_ITEMS = [
+export const FAMOUS_QUOTES = [
   {
     id: 1,
     label: "高田純次",
