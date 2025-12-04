@@ -1,12 +1,16 @@
 // ↓GPTよく理解してないスタイル
 .modal {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
   padding: 20px;
-  z-index: 1000; /* backdrop の上に表示 */
+  z-index: 1000;
+  gap: 12px;
+  border-radius: 8px;
 }
 
 .backDrop {
@@ -15,11 +19,29 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5); /* 半透明で暗くする */
-  z-index: 999; /* モーダルより下に置く */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.ai {
+  font-size: 30px;
+  font-weight: inherit;
+}
+
+.ho {
+  font-size: 15px;
+  font-weight: inherit;
 }
 
 .closeButton {
-  color: white;
-  background-color: #ff4081;
+  align-self: flex-end;
+  width: 10px;
+  background-color: whitesmoke;
+  padding-inline: 10px 20px;
+  border-radius: 20px;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: lightgray;
+  }
 }

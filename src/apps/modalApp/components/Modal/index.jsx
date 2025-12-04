@@ -7,13 +7,13 @@ export const Modal = ({ onClose, selectedItem }) => {
   }
   return (
     <>
-      <div className={styles.backDrop} onClick={onClose}></div>
+      <div className={styles.backDrop} onClick={onClose} />
       <div className={styles.modal}>
-        <p>{selectedItem.label}</p>
-        <p>{selectedItem.message}</p>
         <button onClick={onClose} className={styles.closeButton}>
-          閉じる
+          ×
         </button>
+        <p className={styles.ai}>{selectedItem.label}</p>
+        <p className={styles.ho}>{selectedItem.message}</p>
       </div>
     </>
   );
