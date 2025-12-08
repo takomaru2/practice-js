@@ -8,9 +8,10 @@ const pages = [
   { path: "/toggle-app", name: "トグルスイッチ" },
   { path: "/like-app", name: "いいねアプリ" },
   { path: "/dark-mode-app", name: "ダークモード" },
-  { path: "/modal-app", name: "モーダル" },
-  { path: "/text-counter-app", name: "文字数カウンター" },
   { path: "/accordion-app", name: "アコーディオン" },
+  { path: "/text-counter-app", name: "文字数カウンター" },
+  { path: "/modal-app", name: "モーダル" },
+  { path: "/progress-app", name: "プログレスバー" },
 ];
 
 export const TableOfContentsPage = () => {
