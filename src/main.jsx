@@ -9,6 +9,8 @@ import { ToggleApp } from "./apps/toggleApp/components/ToggleApp/index.jsx";
 import { LikeApp } from "./apps/likeApp/components/LikeApp/index.jsx";
 import { DarkModeApp } from "./apps/darkModeApp/component/DarkModeApp/index.jsx";
 import { ModalApp } from "./apps/modalApp/components/ModalApp/index.jsx";
+import { TextCounter } from "./apps/textCounterApp/components/TextCounter/index.jsx";
+import { AccordionApp } from "./apps/accordionApp/components/AccordionApp/index.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -21,6 +23,8 @@ createRoot(document.getElementById("root")).render(
       <Route path="/like-app" element={<LikeApp />} />
       <Route path="/dark-mode-app" element={<DarkModeApp />} />
       <Route path="/modal-app" element={<ModalApp />} />
+      <Route path="/text-counter-app" element={<TextCounter />} />
+      <Route path="/accordion-app" element={<AccordionApp />} />
     </Routes>
   </BrowserRouter>,
 );
