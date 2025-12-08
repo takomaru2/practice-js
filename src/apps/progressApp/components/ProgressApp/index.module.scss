@@ -1,0 +1,93 @@
+.container {
+  height: 100vh;
+  background: linear-gradient(#4169e1, #00008b);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: whitesmoke;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 10px;
+  border-radius: 20px;
+  gap: 20px;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+}
+
+.bar {
+  width: 100%;
+  height: 30px;
+  background-color: #e6e6e6;
+  border-radius: 20px;
+}
+
+.pa {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.controllers {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hoge {
+  display: flex;
+  gap: 20px;
+}
+
+.minusButton {
+  color: whitesmoke;
+  background-color: #e6e6e6;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 100px;
+}
+.addButton {
+  color: whitesmoke;
+  background-color: #4169e1;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 100px;
+}
+
+.fuga {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.resetButton {
+  font-weight: bold;
+  color: whitesmoke;
+  background-color: #e6e6e6;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 200px;
+}
+
+.controlButton {
+  font-weight: bold;
+  color: whitesmoke;
+  background-color: mediumseagreen;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 200px;
+}
