@@ -43,8 +43,18 @@ export const ProgressApp = () => {
             </button>
           </div>
           <div className={styles.fuga}>
-            <button className={styles.resetButton}>リセット</button>
-            <button className={styles.controlButton}>完了</button>
+            <button
+              className={styles.resetButton}
+              onClick={() => setProgress(0)}
+            >
+              リセット
+            </button>
+            <button
+              className={styles.controlButton}
+              onClick={() => setProgress(100)}
+            >
+              完了
+            </button>
           </div>
           <div className={styles.complete}>😭完了しました！</div>
         </div>
