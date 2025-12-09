@@ -3,6 +3,8 @@ import { useState } from "react";
 
 export const ProgressApp = () => {
   const [progress, setProgress] = useState(0);
+  const completed = progress === 100;
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Progress Bar</h1>
@@ -19,25 +21,33 @@ export const ProgressApp = () => {
           <div className={styles.hoge}>
             <button
               className={styles.minusButton}
-              onClick={() => setProgress(progress - 10)}
+              onClick={() =>
+                setProgress((prev) => Math.min(100, Math.max(0, prev - 10)))
+              }
             >
               -10
             </button>
             <button
               className={styles.minusButton}
-              onClick={() => setProgress(progress - 5)}
+              onClick={() =>
+                setProgress((prev) => Math.min(100, Math.max(0, prev - 5)))
+              }
             >
               -5
             </button>
             <button
               className={styles.addButton}
-              onClick={() => setProgress(progress + 5)}
+              onClick={() =>
+                setProgress((prev) => Math.min(100, Math.max(0, prev + 5)))
+              }
             >
               +5
             </button>
             <button
               className={styles.addButton}
-              onClick={() => setProgress(progress + 10)}
+              onClick={() =>
+                setProgress((prev) => Math.min(100, Math.max(0, prev + 10)))
+              }
             >
               +10
             </button>
@@ -50,13 +60,15 @@ export const ProgressApp = () => {
               リセット
             </button>
             <button
-              className={styles.controlButton}
+              className={styles.completeButton}
               onClick={() => setProgress(100)}
             >
               完了
             </button>
           </div>
-          <div className={styles.complete}>😭完了しました！</div>
+          {completed && (
+            <div className={styles.completeBanner}>😭完了しました！</div>
+          )}
         </div>
       </div>
     </div>

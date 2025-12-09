@@ -88,14 +88,14 @@
 
 .resetButton {
   font-weight: bold;
-  color: whitesmoke;
+  color: dimgray;
   background-color: #e6e6e6;
   padding: 10px;
   border-radius: 10px;
   min-width: 200px;
 }
 
-.controlButton {
+.completeButton {
   font-weight: bold;
   color: whitesmoke;
   background-color: mediumseagreen;
@@ -104,7 +104,7 @@
   min-width: 200px;
 }
 
-.complete {
+.completeBanner {
   text-align: center;
   background-color: lightgreen;
   font-weight: bold;
