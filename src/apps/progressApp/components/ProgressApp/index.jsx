@@ -7,6 +7,7 @@ export const ProgressApp = () => {
       <div className={styles.card}>
         <div className={styles.progress}>
           <div className={styles.bar}></div>
+          <div className={styles.activeBar}></div>
           <span className={styles.pa}>0%</span>
         </div>
         <div className={styles.controllers}>
@@ -20,6 +21,7 @@ export const ProgressApp = () => {
             <button className={styles.resetButton}>リセット</button>
             <button className={styles.controlButton}>完了</button>
           </div>
+          <div className={styles.complete}>😭完了しました！</div>
         </div>
       </div>
     </div>

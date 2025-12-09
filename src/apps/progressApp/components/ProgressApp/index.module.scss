@@ -26,6 +26,8 @@
   flex-direction: column;
   text-align: center;
   gap: 20px;
+  position: relative;
+  width: 100%;
 }
 
 .bar {
@@ -33,6 +35,16 @@
   height: 30px;
   background-color: #e6e6e6;
   border-radius: 20px;
+}
+
+.activeBar {
+  background-color: black;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 50%; // 静的ならここをゼロにしておく
 }
 
 .pa {
@@ -87,6 +99,16 @@
   font-weight: bold;
   color: whitesmoke;
   background-color: mediumseagreen;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 200px;
+}
+
+.complete {
+  text-align: center;
+  background-color: lightgreen;
+  font-weight: bold;
+  color: green;
   padding: 10px;
   border-radius: 10px;
   min-width: 200px;
