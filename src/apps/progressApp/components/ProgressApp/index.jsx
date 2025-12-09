@@ -5,12 +5,16 @@ export const ProgressApp = () => {
   const [progress, setProgress] = useState(0);
   const completed = progress === 100;
 
+  const isMinusDisabled = progress <= 0;
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Progress Bar</h1>
       <div className={styles.card}>
         <div className={styles.progress}>
+          {/*下地のバーを配置*/}
           <div className={styles.bar}></div>
+          {/*アクティブ時のバーを重ねて用意*/}
           <div
             className={styles.activeBar}
             style={{ width: `${progress}%` }}
@@ -20,7 +24,10 @@ export const ProgressApp = () => {
         <div className={styles.controllers}>
           <div className={styles.hoge}>
             <button
-              className={styles.minusButton}
+              disabled={progress === 0}
+              className={
+                isMinusDisabled ? styles.minusDisabled : styles.minusButton
+              }
               onClick={() =>
                 setProgress((prev) => Math.min(100, Math.max(0, prev - 10)))
               }
@@ -28,7 +35,9 @@ export const ProgressApp = () => {
               -10
             </button>
             <button
-              className={styles.minusButton}
+              className={
+                isMinusDisabled ? styles.minusDisabled : styles.minusButton
+              }
               onClick={() =>
                 setProgress((prev) => Math.min(100, Math.max(0, prev - 5)))
               }
@@ -36,7 +45,7 @@ export const ProgressApp = () => {
               -5
             </button>
             <button
-              className={styles.addButton}
+              className={completed ? styles.addDisabled : styles.addButton}
               onClick={() =>
                 setProgress((prev) => Math.min(100, Math.max(0, prev + 5)))
               }
@@ -44,7 +53,7 @@ export const ProgressApp = () => {
               +5
             </button>
             <button
-              className={styles.addButton}
+              className={completed ? styles.addDisabled : styles.addButton}
               onClick={() =>
                 setProgress((prev) => Math.min(100, Math.max(0, prev + 10)))
               }
@@ -60,7 +69,9 @@ export const ProgressApp = () => {
               リセット
             </button>
             <button
-              className={styles.completeButton}
+              className={
+                completed ? styles.completeDisabled : styles.completeButton
+              }
               onClick={() => setProgress(100)}
             >
               完了

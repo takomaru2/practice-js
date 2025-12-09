@@ -45,11 +45,13 @@
   left: 0;
   height: 30px;
   width: 0%; // 静的ならここをゼロにしておく
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1.2);
 }
 
 .pa {
   font-size: 30px;
   font-weight: bold;
+  color: #333;
 }
 
 .controllers {
@@ -65,12 +67,35 @@
 
 .minusButton {
   color: whitesmoke;
+  background-color: #4169e1;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 100px;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: #3153b5;
+  }
+}
+
+.minusDisabled {
+  color: whitesmoke;
   background-color: #e6e6e6;
   font-weight: bold;
   padding: 10px;
   border-radius: 10px;
   min-width: 100px;
+  pointer-events: none;
 }
+
 .addButton {
   color: whitesmoke;
   background-color: #4169e1;
@@ -78,6 +103,28 @@
   padding: 10px;
   border-radius: 10px;
   min-width: 100px;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: #3153b5;
+  }
+}
+
+.addDisabled {
+  color: whitesmoke;
+  background-color: #e6e6e6;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 100px;
+  pointer-events: none;
 }
 
 .fuga {
@@ -93,6 +140,18 @@
   padding: 10px;
   border-radius: 10px;
   min-width: 200px;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: lightgray;
+  }
 }
 
 .completeButton {
@@ -102,13 +161,35 @@
   padding: 10px;
   border-radius: 10px;
   min-width: 200px;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: #2e8b57;
+  }
+}
+
+.completeDisabled {
+  font-weight: bold;
+  color: whitesmoke;
+  background-color: #e6e6e6;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 200px;
+  pointer-events: none;
 }
 
 .completeBanner {
   text-align: center;
-  background-color: lightgreen;
+  background-color: salmon;
   font-weight: bold;
-  color: green;
+  color: whitesmoke;
   padding: 10px;
   border-radius: 10px;
   min-width: 200px;
