@@ -1,7 +1,11 @@
 import styles from "./index.module.scss";
 import { useState } from "react";
-import { MinusButton } from "../MinusButton/index.jsx";
-import { PlusButton } from "../PlusButton/index.jsx";
+import { CalcButton } from "../CalcButton/index.jsx";
+import { RestButton } from "../ResetButton/index.jsx";
+import { CompleteButton } from "../CompleteButton/index.jsx";
+
+const minusArray = [10, 5];
+const plusArray = [5, 10];
 
 export const ProgressApp = () => {
   //僕はここのstateについてなぜこの設計にしたか答えられなければならない
@@ -10,11 +14,7 @@ export const ProgressApp = () => {
 
   const completed = progress === 100;
 
-  const minusCalc = (n) => {
-    setProgress((prev) => Math.min(100, Math.max(0, prev + n)));
-  };
-
-  const plusCalc = (n) => {
+  const calc = (n) => {
     setProgress((prev) => Math.min(100, Math.max(0, prev + n)));
   };
 
@@ -32,46 +32,32 @@ export const ProgressApp = () => {
           ></div>
           <span className={styles.pa}>{progress}%</span>
         </div>
+
         <div className={styles.controllers}>
           <div className={styles.hoge}>
-            <MinusButton
-              displayNumber={"-10"}
-              progress={progress}
-              onClick={() => minusCalc(-10)}
-            />
-            <MinusButton
-              displayNumber={"-5"}
-              progress={progress}
-              onClick={() => minusCalc(-5)}
-            />
+            {minusArray.map((num) => (
+              <CalcButton
+                label={"-" + num}
+                onClick={() => calc(-1 * num)}
+                isdisabled={progress <= 0}
+              />
+            ))}
 
-            <PlusButton
-              displayNumber={"+5"}
-              progress={progress}
-              onClick={() => plusCalc(5)}
-            />
-
-            <PlusButton
-              displayNumber={"+10"}
-              progress={progress}
-              onClick={() => plusCalc(10)}
-            />
+            {plusArray.map((num) => (
+              <CalcButton
+                label={"+" + num}
+                onClick={() => calc(num)}
+                isdisabled={progress === 100}
+              />
+            ))}
           </div>
           <div className={styles.fuga}>
-            <button
-              className={styles.resetButton}
-              onClick={() => setProgress(0)}
-            >
-              リセット
-            </button>
-            <button
-              className={
-                completed ? styles.completeDisabled : styles.completeButton
-              }
+            <RestButton label={"リセット"} onClick={() => setProgress(0)} />
+            <CompleteButton
+              label={"完了"}
               onClick={() => setProgress(100)}
-            >
-              完了
-            </button>
+              completed={completed}
+            />
           </div>
           {/*状態的にもう一つstateを作ることが考えられるが今のstateを使って表現できるから*/}
           {completed && (
