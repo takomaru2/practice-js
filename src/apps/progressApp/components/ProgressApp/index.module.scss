@@ -76,13 +76,14 @@
     background-color 0.2s,
     transform 0.2s;
 
-  &:active {
-    transform: translateY(0);
-  }
-
   &:hover {
     transform: translateY(-2px);
     background-color: #3153b5;
+  }
+
+  &:hover:active,
+  &:active {
+    transform: translateY(2px); /* クリック中は沈む */
   }
 }
 
@@ -107,13 +108,14 @@
     background-color 0.2s,
     transform 0.2s;
 
-  &:active {
-    transform: translateY(0);
-  }
-
   &:hover {
     transform: translateY(-2px);
     background-color: #3153b5;
+  }
+
+  &:hover:active,
+  &:active {
+    transform: translateY(2px); /* クリック中は沈む */
   }
 }
 
@@ -144,13 +146,14 @@
     background-color 0.2s,
     transform 0.2s;
 
-  &:active {
-    transform: translateY(0);
-  }
-
   &:hover {
     transform: translateY(-2px);
-    background-color: lightgray;
+    background-color: #3153b5;
+  }
+
+  &:hover:active,
+  &:active {
+    transform: translateY(2px); /* クリック中は沈む */
   }
 }
 
@@ -165,13 +168,14 @@
     background-color 0.2s,
     transform 0.2s;
 
-  &:active {
-    transform: translateY(0);
-  }
-
   &:hover {
     transform: translateY(-2px);
-    background-color: #2e8b57;
+    background-color: #3153b5;
+  }
+
+  &:hover:active,
+  &:active {
+    transform: translateY(2px); /* クリック中は沈む */
   }
 }
 
