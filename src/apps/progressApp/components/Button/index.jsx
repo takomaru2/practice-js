@@ -2,27 +2,9 @@ import styles from "./index.module.scss";
 
 //colorはgreen,blue,grayが入ってくる想定
 export const Button = ({ onClick, label, isDisabled, size, color }) => {
-  let colorStyle;
-  // if文中身がtrueなら次のif文に入らない。falseなら入る
-  if (!isDisabled) {
-    if (color === "green") {
-      colorStyle = { backgroundColor: "green", color: "white" };
-    }
-    if (color === "blue") {
-      colorStyle = { backgroundColor: "blue", color: "white" };
-    }
-    if (color === "gray") {
-      colorStyle = { backgroundColor: "lightGray", color: "white" };
-    }
-  }
+  const colorStyle = isDisabled ? {} : getColorStyle(color);
 
-  let sizeStyle;
-  if (size === "large") {
-    sizeStyle = { paddingInline: 32 };
-  }
-  if (size === "small") {
-    sizeStyle = { paddingInline: 16 };
-  }
+  const sizeStyle = getSizeStyle(size);
 
   return (
     <button
@@ -34,4 +16,39 @@ export const Button = ({ onClick, label, isDisabled, size, color }) => {
       {label}
     </button>
   );
+};
+
+// 引数は文字列,戻り値はobj
+const getColorStyle = (color) => {
+  let colorStyle;
+
+  switch (color) {
+    case "green":
+      colorStyle = { backgroundColor: "green", color: "white" };
+      break;
+    case "blue":
+      colorStyle = { backgroundColor: "blue", color: "white" };
+      break;
+    case "gray":
+      colorStyle = { backgroundColor: "lightGray", color: "white" };
+      break;
+    default:
+  }
+
+  return colorStyle;
+};
+
+const getSizeStyle = (size) => {
+  let sizeStyle;
+
+  switch (size) {
+    case "large":
+      sizeStyle = { paddingInline: 32 };
+      break;
+    case "small":
+      sizeStyle = { paddingInline: 16 };
+      break;
+    default:
+  }
+  return sizeStyle;
 };

@@ -1,46 +1,53 @@
 import styles from "./index.module.scss";
 import { useState } from "react";
 import { Button } from "../Button/index.jsx";
+import { ProgressBar } from "../ProgressBar/index.jsx";
+
+// 引数がnumberで戻り値もnumber
+/**
+ * @example
+ * clamp(-5) // 0
+ * clamp(105) // 100
+ */
+const clamp = (num) => {
+  return Math.min(THRESHOLD.MAX, Math.max(THRESHOLD.MIN, num));
+};
+
+const THRESHOLD = {
+  MAX: 100,
+  MIN: 0,
+};
 
 export const ProgressApp = () => {
   //僕はここのstateについてなぜこの設計にしたか答えられなければならない
   const [progress, setProgress] = useState(0);
 
-  const isCompleted = progress === 100;
-  const isEmpty = progress === 0;
+  const isCompleted = progress >= THRESHOLD.MAX;
+  const isEmptyProgress = progress <= THRESHOLD.MIN;
 
   const handleClickCalcButton = (n) => {
-    setProgress((prev) => Math.min(100, Math.max(0, prev + n)));
+    setProgress((prev) => clamp(prev + n));
   };
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Progress Bar</h1>
       <div className={styles.card}>
-        <div className={styles.progress}>
-          {/*下地のバーを配置*/}
-          <div className={styles.bar}></div>
-          {/*アクティブ時のバーを重ねて用意*/}
-          <div
-            className={styles.activeBar}
-            style={{ width: `${progress}%` }}
-          ></div>
-          <span className={styles.pa}>{progress}%</span>
-        </div>
+        <ProgressBar progress={progress} />
 
         <div className={styles.buttonWrapper}>
           <div className={styles.actionButtonWrapper}>
             <Button
               label={"-10"}
               onClick={() => handleClickCalcButton(-10)}
-              isDisabled={isEmpty}
+              isDisabled={isEmptyProgress}
               size={"small"}
               color={"blue"}
             />
             <Button
               label={"-5"}
               onClick={() => handleClickCalcButton(-5)}
-              isDisabled={isEmpty}
+              isDisabled={isEmptyProgress}
               size={"small"}
               color={"blue"}
             />
@@ -64,7 +71,7 @@ export const ProgressApp = () => {
             <Button
               label={"リセット"}
               onClick={() => setProgress(0)}
-              isDisabled={isEmpty}
+              isDisabled={isEmptyProgress}
               size={"large"}
               color={"gray"}
             />
