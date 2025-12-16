@@ -5,11 +5,11 @@ import { Button } from "../Button/index.jsx";
 export const ProgressApp = () => {
   //僕はここのstateについてなぜこの設計にしたか答えられなければならない
   const [progress, setProgress] = useState(0);
-  console.log(progress);
 
-  const completed = progress === 100;
+  const isCompleted = progress === 100;
+  const isEmpty = progress === 0;
 
-  const calc = (n) => {
+  const handleClickCalcButton = (n) => {
     setProgress((prev) => Math.min(100, Math.max(0, prev + n)));
   };
 
@@ -28,64 +28,60 @@ export const ProgressApp = () => {
           <span className={styles.pa}>{progress}%</span>
         </div>
 
-        <div className={styles.controllerWrapper}>
-          <div className={styles.hoge}>
-            <div className={styles.controllerWrapper}>
-              <div className={styles.buttonWrapper}>
-                <Button
-                  label={"-10"}
-                  onClick={() => calc(-10)}
-                  isDisabled={progress === 0}
-                  size={"small"}
-                  color={"blue"}
-                />
-                <Button
-                  label={"-5"}
-                  onClick={() => calc(-5)}
-                  isDisabled={progress === 0}
-                  size={"small"}
-                  color={"blue"}
-                />
-                <Button
-                  label={"+5"}
-                  onClick={() => calc(+5)}
-                  isDisabled={completed}
-                  size={"small"}
-                  color={"blue"}
-                />
-                <Button
-                  label={"+10"}
-                  onClick={() => calc(+10)}
-                  isDisabled={completed}
-                  size={"small"}
-                  color={"blue"}
-                />
-              </div>
-
-              <div className={styles.fuga}>
-                <Button
-                  label={"リセット"}
-                  onClick={() => setProgress(0)}
-                  isDisabled={progress === 0}
-                  size={"large"}
-                  color={"gray"}
-                />
-
-                <Button
-                  label={"完了"}
-                  onClick={() => setProgress(100)}
-                  isDisabled={completed}
-                  size={"large"}
-                  color={"green"}
-                />
-              </div>
-            </div>
+        <div className={styles.buttonWrapper}>
+          <div className={styles.actionButtonWrapper}>
+            <Button
+              label={"-10"}
+              onClick={() => handleClickCalcButton(-10)}
+              isDisabled={isEmpty}
+              size={"small"}
+              color={"blue"}
+            />
+            <Button
+              label={"-5"}
+              onClick={() => handleClickCalcButton(-5)}
+              isDisabled={isEmpty}
+              size={"small"}
+              color={"blue"}
+            />
+            <Button
+              label={"+5"}
+              onClick={() => handleClickCalcButton(+5)}
+              isDisabled={isCompleted}
+              size={"small"}
+              color={"blue"}
+            />
+            <Button
+              label={"+10"}
+              onClick={() => handleClickCalcButton(+10)}
+              isDisabled={isCompleted}
+              size={"small"}
+              color={"blue"}
+            />
           </div>
-          {/*状態的にもう一つstateを作ることが考えられるが今のstateを使って表現できるから*/}
-          {completed && (
-            <div className={styles.completeBanner}>😭完了しました！</div>
-          )}
+
+          <div className={styles.actionButtonWrapper}>
+            <Button
+              label={"リセット"}
+              onClick={() => setProgress(0)}
+              isDisabled={isEmpty}
+              size={"large"}
+              color={"gray"}
+            />
+
+            <Button
+              label={"完了"}
+              onClick={() => setProgress(100)}
+              isDisabled={isCompleted}
+              size={"large"}
+              color={"green"}
+            />
+          </div>
         </div>
+        {/*状態的にもう一つstateを作ることが考えられるが今のstateを使って表現できるから*/}
+        {isCompleted && (
+          <div className={styles.completeBanner}>😭完了しました！</div>
+        )}
       </div>
     </div>
   );

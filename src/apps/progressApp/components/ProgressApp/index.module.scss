@@ -54,112 +54,16 @@
   color: #333;
 }
 
-.controllerWrapper {
+.buttonWrapper {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.buttonWrapper {
-  display: flex;
-  gap: 10px;
-}
-
-.hoge {
-  display: flex;
-  gap: 20px;
-}
-
-.addButton {
-  color: whitesmoke;
-  background-color: #4169e1;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 10px;
-  min-width: 100px;
-  transition:
-    background-color 0.2s,
-    transform 0.2s;
-
-  &:hover {
-    transform: translateY(-2px);
-    background-color: #3153b5;
-  }
-
-  &:hover:active,
-  &:active {
-    transform: translateY(2px); /* クリック中は沈む */
-  }
-}
-
-.addDisabled {
-  color: whitesmoke;
-  background-color: #e6e6e6;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 10px;
-  min-width: 100px;
-  pointer-events: none;
-}
-
-.fuga {
+.actionButtonWrapper {
   display: flex;
   gap: 20px;
   justify-content: center;
-}
-
-.resetButton {
-  font-weight: bold;
-  color: dimgray;
-  background-color: #e6e6e6;
-  padding: 10px;
-  border-radius: 10px;
-  min-width: 200px;
-  transition:
-    background-color 0.2s,
-    transform 0.2s;
-
-  &:hover {
-    transform: translateY(-2px);
-    background-color: lightgray;
-  }
-
-  &:hover:active,
-  &:active {
-    transform: translateY(2px); /* クリック中は沈む */
-  }
-}
-
-.completeButton {
-  font-weight: bold;
-  color: whitesmoke;
-  background-color: mediumseagreen;
-  padding: 10px;
-  border-radius: 10px;
-  min-width: 200px;
-  transition:
-    background-color 0.2s,
-    transform 0.2s;
-
-  &:hover {
-    transform: translateY(-2px);
-    background-color: #34925e;
-  }
-
-  &:hover:active,
-  &:active {
-    transform: translateY(2px); /* クリック中は沈む */
-  }
-}
-
-.completeDisabled {
-  font-weight: bold;
-  color: whitesmoke;
-  background-color: #e6e6e6;
-  padding: 10px;
-  border-radius: 10px;
-  min-width: 200px;
-  pointer-events: none;
 }
 
 .completeBanner {
