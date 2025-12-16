@@ -1,14 +1,20 @@
 import { useState } from "react";
+import { clamp } from "../utils/clamp/index.js";
 
-export const useProgress = () => {
+/**
+ *
+ * @param thresholdMax completed時の値
+ *
+ */
+export const useProgress = (thresholdMax) => {
   const [progress, setProgress] = useState(0);
 
   const action = {
     reset: () => setProgress(0),
-    completed: (n) => setProgress(n),
-    // clamp: (n, thresholdMax) => {
-    //   setProgress((prev) => clamp(prev + n, thresholdMax));
-    // },
+    completed: () => setProgress(thresholdMax),
+    clamp: (n) => {
+      setProgress((prev) => clamp(prev + n, thresholdMax));
+    },
   };
 
   return [progress, action, setProgress];

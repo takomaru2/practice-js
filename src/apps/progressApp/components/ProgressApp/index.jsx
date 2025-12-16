@@ -3,17 +3,12 @@ import { Button } from "../Button/index.jsx";
 import { ProgressBar } from "../ProgressBar/index.jsx";
 import { THRESHOLD } from "../../../../constants/THRESHOLD/index.js";
 import { useProgress } from "../../../../hooks/index.js";
-import { clamp } from "../../../../utils/clamp/index.js";
 
 export const ProgressApp = () => {
-  const [progress, actions, setProgress] = useProgress();
+  const [progress, actions] = useProgress(THRESHOLD.MAX);
 
   const isCompleted = progress === THRESHOLD.MAX;
   const isEmptyProgress = progress <= THRESHOLD.MIN;
-
-  const handleProgress = (n) => {
-    setProgress((prev) => clamp(prev + n));
-  };
 
   return (
     <div className={styles.container}>
@@ -25,7 +20,7 @@ export const ProgressApp = () => {
           <div className={styles.actionButtonWrapper}>
             <Button
               label={"-10"}
-              onClick={() => handleProgress(-10)}
+              onClick={() => actions.clamp(-10)}
               isDisabled={isEmptyProgress}
               size={"small"}
               color={"blue"}
@@ -33,21 +28,21 @@ export const ProgressApp = () => {
 
             <Button
               label={"-5"}
-              onClick={() => handleProgress(-5)}
+              onClick={() => actions.clamp(-5)}
               isDisabled={isEmptyProgress}
               size={"small"}
               color={"blue"}
             />
             <Button
               label={"+5"}
-              onClick={() => handleProgress(+5)}
+              onClick={() => actions.clamp(+5)}
               isDisabled={isCompleted}
               size={"small"}
               color={"blue"}
             />
             <Button
               label={"+10"}
-              onClick={() => handleProgress(+10)}
+              onClick={() => actions.clamp(+10)}
               isDisabled={isCompleted}
               size={"small"}
               color={"blue"}
@@ -72,7 +67,6 @@ export const ProgressApp = () => {
             />
           </div>
         </div>
-        {/*状態的にもう一つstateを作ることが考えられるが今のstateを使って表現できるから*/}
         {isCompleted && (
           <div className={styles.completeBanner}>😭完了しました！</div>
         )}
