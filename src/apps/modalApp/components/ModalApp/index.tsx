@@ -4,11 +4,19 @@ import { useState } from "react";
 import { Modal } from "../Modal/index.tsx";
 import { FAMOUS_QUOTES } from "../../constants/famousQuotes.ts";
 
+export type Item = {
+  id: number;
+  speaker: string;
+  message: string;
+};
+
 export const ModalApp = () => {
-  const [selectedFamousQuote, setSelectedFamousQuote] = useState(null);
+  const [selectedFamousQuote, setSelectedFamousQuote] = useState<null | Item>(
+    null,
+  );
 
   // この関数たちは'このコンポーネントのsetMessageを使う'ので、ここに置く必要があるよねっ
-  const showModal = (item) => setSelectedFamousQuote(item);
+  const showModal = (item: Item) => setSelectedFamousQuote(item);
   const closeModal = () => setSelectedFamousQuote(null);
 
   return (

@@ -1,11 +1,21 @@
 import styles from "./index.module.scss";
+import { MouseEventHandler } from "react";
+import { Item } from "../ModalApp";
 
-export const Modal = ({ onClose, quote }) => {
+type ModalProps = {
+  // onClose: () => void;
+  // onClose:MouseEventHandler; // buttonから生えてんのとdivから生えてんの微妙に違うから共通のつけた
+  onClose: MouseEventHandler<HTMLElement>;
+  quote: Item | null; //　子要素でnullが入りうるのはよくなかど？
+};
+
+export const Modal = ({ onClose, quote }: ModalProps) => {
   //message がないときはnullを返す（非表示）ようにしたいが
   // null,undefined''（空文字）0,falseとかがあり得るので
   //typeofを使ってみよう
   //selectedItemの型が‘object’じゃないまたはnullの場合はreturn する
 
+  // todo:こいつらいらん？？
   const isInvalidSelectedFamousQuote =
     typeof quote !== "object" || quote === null;
 
