@@ -1,8 +1,8 @@
 import styles from "./index.module.scss";
-import { Button } from "../Button/index.jsx";
+import { Button } from "../Button/index.tsx";
 import { useState } from "react";
-import { Modal } from "../Modal/index.jsx";
-import { FAMOUS_QUOTES } from "../../constants/famousQuotes.js";
+import { Modal } from "../Modal/index.tsx";
+import { FAMOUS_QUOTES } from "../../constants/famousQuotes.ts";
 
 export const ModalApp = () => {
   const [selectedFamousQuote, setSelectedFamousQuote] = useState(null);
