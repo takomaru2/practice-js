@@ -1,11 +1,12 @@
 import styles from "./index.module.scss";
+import { MouseEventHandler } from "react";
 
 // propsはオブジェクトの形だからこれでええねん
 // これは直接引数に型をつけているのでは無く、先に型を定義してからつけようという作戦
 //speakerは辿っていけばstringなことはわかる
 type ButtonProps = {
   speaker: string;
-  onClick: () => void;
+  onClick: MouseEventHandler<HTMLButtonElement>;
 };
 //さて問題はonClickだ。onClickには関数が渡されているが、関数型ーで済む話なのか
 //
