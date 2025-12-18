@@ -1,14 +1,11 @@
 import styles from "./index.module.scss";
 import { Button } from "../Button/index.jsx";
 import { ProgressBar } from "../ProgressBar/index.jsx";
-import { THRESHOLD } from "../../../../constants/THRESHOLD/index.js";
-import { useProgress } from "../../../../hooks/index.js";
+import { useProgress } from "../../../../hooks/useProgress.js";
 
 export const ProgressApp = () => {
-  const [progress, actions] = useProgress(THRESHOLD.MAX);
-
-  const isCompleted = progress === THRESHOLD.MAX;
-  const isEmptyProgress = progress <= THRESHOLD.MIN;
+  const { progress, isStart, isCompleted, minus, plus, reset, complete } =
+    useProgress();
 
   return (
     <div className={styles.container}>
@@ -20,29 +17,29 @@ export const ProgressApp = () => {
           <div className={styles.actionButtonWrapper}>
             <Button
               label={"-10"}
-              onClick={() => actions.clamp(-10)}
-              isDisabled={isEmptyProgress}
+              onClick={() => minus(10)}
+              isDisabled={isStart}
               size={"small"}
               color={"blue"}
             />
 
             <Button
               label={"-5"}
-              onClick={() => actions.clamp(-5)}
-              isDisabled={isEmptyProgress}
+              onClick={() => minus(5)}
+              isDisabled={isStart}
               size={"small"}
               color={"blue"}
             />
             <Button
               label={"+5"}
-              onClick={() => actions.clamp(+5)}
+              onClick={() => plus(5)}
               isDisabled={isCompleted}
               size={"small"}
               color={"blue"}
             />
             <Button
               label={"+10"}
-              onClick={() => actions.clamp(+10)}
+              onClick={() => plus(10)}
               isDisabled={isCompleted}
               size={"small"}
               color={"blue"}
@@ -52,15 +49,15 @@ export const ProgressApp = () => {
           <div className={styles.actionButtonWrapper}>
             <Button
               label={"リセット"}
-              onClick={actions.reset}
-              isDisabled={isEmptyProgress}
+              onClick={reset}
+              isDisabled={isStart}
               size={"large"}
               color={"gray"}
             />
 
             <Button
               label={"完了"}
-              onClick={() => actions.completed(100)}
+              onClick={complete}
               isDisabled={isCompleted}
               size={"large"}
               color={"green"}
