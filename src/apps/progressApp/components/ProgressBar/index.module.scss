@@ -1,0 +1,32 @@
+.progress {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.bar {
+  width: 100%;
+  height: 30px;
+  background-color: #e6e6e6;
+  border-radius: 20px;
+}
+
+.activeBar {
+  background-color: black;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 0%; // 静的ならここをゼロにしておく
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1.2);
+}
+
+.pa {
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+}

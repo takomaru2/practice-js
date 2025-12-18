@@ -1,0 +1,44 @@
+.container {
+  height: 100vh;
+  background: linear-gradient(#4169e1, #00008b);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: whitesmoke;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 10px;
+  border-radius: 20px;
+  gap: 20px;
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.actionButtonWrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.completeBanner {
+  text-align: center;
+  background-color: salmon;
+  font-weight: bold;
+  color: whitesmoke;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 200px;
+}
