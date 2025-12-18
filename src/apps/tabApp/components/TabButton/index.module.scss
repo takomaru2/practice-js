@@ -1,4 +1,4 @@
-@import "/src/styles/mixin.module.scss";
+@use "/src/styles/mixin.module.scss" as mixin;
 
 .container {
   width: 100%;
@@ -8,7 +8,7 @@
   justify-content: center;
   color: gray;
 
-  @include sp {
+  @include mixin.sp {
     padding: 20px;
     flex-direction: column;
   }
