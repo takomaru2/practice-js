@@ -3,12 +3,7 @@ import { Button } from "../Button/index.tsx";
 import { useState } from "react";
 import { Modal } from "../Modal/index.tsx";
 import { FAMOUS_QUOTES } from "../../constants/famousQuotes.ts";
-
-export type Item = {
-  id: number;
-  speaker: string;
-  message: string;
-};
+import { Item } from "../../types";
 
 export const ModalApp = () => {
   const [selectedFamousQuote, setSelectedFamousQuote] = useState<null | Item>(

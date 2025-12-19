@@ -6,10 +6,9 @@ import { MouseEventHandler } from "react";
 //speakerは辿っていけばstringなことはわかる
 type ButtonProps = {
   speaker: string;
-  onClick: MouseEventHandler<HTMLButtonElement>; //1個の型;
+  onClick: MouseEventHandler<HTMLButtonElement>; //1個の型
 };
 //さて問題はonClickだ。onClickには関数が渡されているが、関数型ーで済む話なのか
-//
 
 export const Button = ({ speaker, onClick }: ButtonProps) => {
   return (

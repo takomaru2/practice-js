@@ -1,11 +1,11 @@
 import styles from "./index.module.scss";
-import { MouseEventHandler } from "react";
-import { Item } from "../ModalApp";
+import { Item } from "../../types";
 
 type ModalProps = {
-  // onClose: () => void;
+  // todo:isOpenもいるのかも
+  onClose: () => void;
   // onClose:MouseEventHandler; // buttonから生えてんのとdivから生えてんの微妙に違うから共通のつけた
-  onClose: MouseEventHandler<HTMLElement>;
+  // onClose: MouseEventHandler<HTMLElement>;
   quote: Item | null; //　子要素でnullが入りうるのはよくなかど？
 };
 
@@ -15,11 +15,7 @@ export const Modal = ({ onClose, quote }: ModalProps) => {
   //typeofを使ってみよう
   //selectedItemの型が‘object’じゃないまたはnullの場合はreturn する
 
-  // todo:こいつらいらん？？
-  const isInvalidSelectedFamousQuote =
-    typeof quote !== "object" || quote === null;
-
-  if (isInvalidSelectedFamousQuote) {
+  if (quote === null) {
     return null;
   }
 
