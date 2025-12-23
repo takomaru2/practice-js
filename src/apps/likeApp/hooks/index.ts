@@ -1,16 +1,22 @@
 import { useState } from "react";
 
-// 実務では今回は全て型をつけないかも？推論に全部任せるかも
-export const useLikeCounter = () => {
+type useLikeCounterReturn = {
+  count: number;
+  handleLike: () => void;
+  handleReset: () => void;
+};
+
+// 一応練習として全部明示的につけてみる
+export const useLikeCounter = (): useLikeCounterReturn => {
   const [count, setCount] = useState<number>(0);
 
-  const handleLike = () => {
+  const handleLike = (): void => {
     setCount((prev) => {
       return prev + 1;
     });
   };
 
-  const handleReset = () => {
+  const handleReset = (): void => {
     setCount(0);
   };
 
