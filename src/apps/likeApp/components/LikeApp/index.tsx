@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import { useLikeCounter } from "../../hooks/index.js";
+import { useLikeCounter } from "../../hooks";
 
 export const LikeApp = () => {
   const { count, handleLike, handleReset } = useLikeCounter();

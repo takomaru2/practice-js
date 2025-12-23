@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-export const useLikeCounter = () => {
+type UseLikeCounterReturn = {
+  count: number;
+  handleLike: () => void;
+  handleReset: () => void;
+};
+
+export const useLikeCounter = (): UseLikeCounterReturn => {
   const [count, setCount] = useState(0);
 
   const handleLike = () => {
