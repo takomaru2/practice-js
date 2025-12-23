@@ -7,7 +7,7 @@ import { TableOfContentsPage } from "./TableOfContentsRouter.jsx";
 import { ColorApp } from "./apps/colorApp/components/ColorApp/index.jsx";
 import { ToggleApp } from "./apps/toggleApp/components/ToggleApp/index.jsx";
 import { LikeApp } from "./apps/likeApp/components/LikeApp/index.tsx";
-import { DarkModeApp } from "./apps/darkModeApp/component/DarkModeApp/index.jsx";
+import { DarkModeApp } from "./apps/darkModeApp/component/DarkModeApp/index.tsx";
 import { AccordionApp } from "./apps/accordionApp/components/AccordionApp/index.jsx";
 import { TextCounter } from "./apps/textCounterApp/components/TextCounter/index.jsx";
 import { ModalApp } from "./apps/modalApp/components/ModalApp/index.tsx";

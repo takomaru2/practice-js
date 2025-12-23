@@ -1,10 +1,10 @@
 import styles from "./index.module.scss";
-import { useState } from "react";
+import { FC, useState } from "react";
 
-export const DarkModeApp = () => {
-  const [isDark, setIsDark] = useState(false);
+export const DarkModeApp: FC = () => {
+  const [isDark, setIsDark] = useState<boolean>(false);
 
-  const toggleColorMode = () => {
+  const toggleColorMode = (): void => {
     setIsDark((prev) => {
       return !prev;
     });
