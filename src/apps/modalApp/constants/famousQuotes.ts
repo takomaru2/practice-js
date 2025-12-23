@@ -1,4 +1,6 @@
-export const FAMOUS_QUOTES = [
+import { Item } from "../types";
+
+export const FAMOUS_QUOTES: Item[] = [
   {
     id: 1,
     speaker: "高田純次",

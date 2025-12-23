@@ -1,14 +1,17 @@
 import styles from "./index.module.scss";
-import { Button } from "../Button/index.jsx";
+import { Button } from "../Button/index.tsx";
 import { useState } from "react";
-import { Modal } from "../Modal/index.jsx";
-import { FAMOUS_QUOTES } from "../../constants/famousQuotes.js";
+import { Modal } from "../Modal/index.tsx";
+import { FAMOUS_QUOTES } from "../../constants/famousQuotes.ts";
+import { Item } from "../../types";
 
 export const ModalApp = () => {
-  const [selectedFamousQuote, setSelectedFamousQuote] = useState(null);
+  const [selectedFamousQuote, setSelectedFamousQuote] = useState<null | Item>(
+    null,
+  );
 
   // この関数たちは'このコンポーネントのsetMessageを使う'ので、ここに置く必要があるよねっ
-  const showModal = (item) => setSelectedFamousQuote(item);
+  const showModal = (item: Item) => setSelectedFamousQuote(item);
   const closeModal = () => setSelectedFamousQuote(null);
 
   return (

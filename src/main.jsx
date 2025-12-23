@@ -10,7 +10,7 @@ import { LikeApp } from "./apps/likeApp/components/LikeApp/index.jsx";
 import { DarkModeApp } from "./apps/darkModeApp/component/DarkModeApp/index.jsx";
 import { AccordionApp } from "./apps/accordionApp/components/AccordionApp/index.jsx";
 import { TextCounter } from "./apps/textCounterApp/components/TextCounter/index.jsx";
-import { ModalApp } from "./apps/modalApp/components/ModalApp/index.jsx";
+import { ModalApp } from "./apps/modalApp/components/ModalApp/index.tsx";
 import { ProgressApp } from "./apps/progressApp/components/ProgressApp/index.jsx";
 
 createRoot(document.getElementById("root")).render(
