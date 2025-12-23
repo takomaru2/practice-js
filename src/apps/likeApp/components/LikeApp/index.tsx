@@ -1,7 +1,8 @@
 import styles from "./index.module.scss";
 import { useLikeCounter } from "../../hooks";
+import { FC } from "react";
 
-export const LikeApp = () => {
+export const LikeApp: FC = () => {
   const { count, handleLike, handleReset } = useLikeCounter();
 
   return (
