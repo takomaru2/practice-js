@@ -5,7 +5,7 @@ import "ress";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { TableOfContentsPage } from "./TableOfContentsRouter.jsx";
 import { ColorApp } from "./apps/colorApp/components/ColorApp/index.jsx";
-import { ToggleApp } from "./apps/toggleApp/components/ToggleApp/index.jsx";
+import { ToggleApp } from "./apps/toggleApp/components/ToggleApp/index.tsx";
 import { LikeApp } from "./apps/likeApp/components/LikeApp/index.tsx";
 import { DarkModeApp } from "./apps/darkModeApp/component/DarkModeApp/index.jsx";
 import { AccordionApp } from "./apps/accordionApp/components/AccordionApp/index.jsx";
