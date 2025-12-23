@@ -1,10 +1,11 @@
 import styles from "./index.module.scss";
 import { useState } from "react";
+import { FC } from "react";
 
-export const ToggleApp = () => {
-  const [isOn, setIsOn] = useState(false);
+export const ToggleApp: FC = () => {
+  const [isOn, setIsOn] = useState<boolean>(false);
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     setIsOn(!isOn);
   };
 
