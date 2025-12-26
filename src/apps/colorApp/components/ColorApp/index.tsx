@@ -24,9 +24,6 @@ export const ColorApp: FC = () => {
         <ColorButton
           key={name}
           colorName={name}
-          //TS7053:要素は暗黙的にany型となります。文字列型の式は型インデックスに使用できないためです。
-          //型には、文字列型のパラメータを持つインデックスシグネチャが見つかりませんでした
-          // したいこと、
           colorCode={COLORS[name]}
           onClick={() => {
             setSelectedColorName(name);

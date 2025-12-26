@@ -1,4 +1,5 @@
 import styles from "./index.module.scss";
+import { CSSProperties } from "react";
 
 export type colorButtonProps = {
   colorName: string;
@@ -15,7 +16,7 @@ export const ColorButton = ({
     <button
       onClick={onClick}
       className={styles.button}
-      // style={{ "--hover-bg-color": colorCode }}
+      style={{ "--hover-bg-color": colorCode } as CSSProperties}
     >
       <div>{colorName}</div>
       <div>{colorCode}</div>
