@@ -1,7 +1,7 @@
-import { TabButton } from "../TabButton/index.jsx";
+import { TabButton } from "../TabButton";
 import styles from "./index.module.scss";
 import { useState } from "react";
-import { MESSAGES, TAB_NAME, TABS } from "../../constants/index.js";
+import { MESSAGES, TAB_NAME, TABS } from "../../constants";
 
 export const TabApp = () => {
   const [selectedTab, setSelectedTab] = useState(TAB_NAME.HOME);
