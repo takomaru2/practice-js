@@ -1,10 +1,11 @@
 import { TabButton } from "../TabButton";
 import styles from "./index.module.scss";
-import { useState } from "react";
-import { MESSAGES, TAB_NAME, TABS } from "../../constants";
+import { FC, useState } from "react";
+import { MESSAGES, TAB_ID, TABS } from "../../constants";
+import { TabId } from "../../types";
 
-export const TabApp = () => {
-  const [selectedTab, setSelectedTab] = useState(TAB_NAME.HOME);
+export const TabApp: FC = () => {
+  const [selectedTab, setSelectedTab] = useState<TabId>(TAB_ID.HOME);
 
   return (
     <div className={styles.container}>
@@ -13,13 +14,13 @@ export const TabApp = () => {
         {TABS.map((tab) => {
           return (
             <TabButton
-              key={tab.tabName}
+              key={tab.id}
               icon={tab.icon}
               label={tab.label}
               onClick={() => {
-                setSelectedTab(tab.tabName);
+                setSelectedTab(tab.id);
               }}
-              isSelected={selectedTab === tab.tabName}
+              isSelected={selectedTab === tab.id}
             />
           );
         })}
