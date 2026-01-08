@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import { AccordionItem } from "../AccordionItem/index.jsx";
+import { AccordionItem } from "../AccordionItem";
 import { useState } from "react";
 
 const ITEMS = [
@@ -9,22 +9,22 @@ const ITEMS = [
 ];
 
 export const AccordionApp = () => {
-  const [openIndex, setOpenIndex] = useState([]);
+  const [openIndex, setOpenIndex] = useState<any>([]);
 
   const openAll = () => {
-    setOpenIndex(ITEMS.map((item, index) => index));
+    setOpenIndex(ITEMS.map((_, index) => index));
   };
 
   const closeAll = () => {
     setOpenIndex([]);
   };
 
-  const toggleItem = (index) => {
-    setOpenIndex((prev) => {
+  const toggleItem = (index: any) => {
+    setOpenIndex((prev: any) => {
       if (prev.includes(index)) {
         // 開いている=>閉じる
         //閉じたいので既に空いている状態。結果prevからindexと同じものだけ消える。
-        return prev.filter((i) => i !== index);
+        return prev.filter((i: any) => i !== index);
       } else {
         // 閉じている=>開く
         return [...prev, index];
