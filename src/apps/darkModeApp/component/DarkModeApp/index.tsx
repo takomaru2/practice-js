@@ -1,10 +1,10 @@
 import styles from "./index.module.scss";
-import { FC, useState } from "react";
+import { FC, MouseEventHandler, useState } from "react";
 
 export const DarkModeApp: FC = () => {
   const [isDark, setIsDark] = useState<boolean>(false);
 
-  const toggleColorMode: () => void = () => {
+  const toggleColorMode: MouseEventHandler<HTMLButtonElement> = () => {
     setIsDark((prev) => {
       return !prev;
     });
