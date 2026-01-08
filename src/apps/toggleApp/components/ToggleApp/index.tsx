@@ -5,7 +5,7 @@ import { FC } from "react";
 export const ToggleApp: FC = () => {
   const [isOn, setIsOn] = useState<boolean>(false);
 
-  const handleClick = (): void => {
+  const handleClick: () => void = () => {
     setIsOn(!isOn);
   };
 
