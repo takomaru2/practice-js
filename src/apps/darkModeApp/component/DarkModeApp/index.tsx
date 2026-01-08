@@ -4,7 +4,7 @@ import { FC, useState } from "react";
 export const DarkModeApp: FC = () => {
   const [isDark, setIsDark] = useState<boolean>(false);
 
-  const toggleColorMode = (): void => {
+  const toggleColorMode: () => void = () => {
     setIsDark((prev) => {
       return !prev;
     });
