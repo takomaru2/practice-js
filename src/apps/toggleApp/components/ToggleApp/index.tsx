@@ -1,11 +1,11 @@
 import styles from "./index.module.scss";
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import { FC } from "react";
 
 export const ToggleApp: FC = () => {
   const [isOn, setIsOn] = useState<boolean>(false);
 
-  const handleClick: () => void = () => {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
     setIsOn(!isOn);
   };
 
