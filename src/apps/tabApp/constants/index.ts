@@ -1,5 +1,3 @@
-// DRYにしたかったので生まれたこいつ
-
 export const TAB_ID = {
   HOME: "home",
   SEARCH: "search",
@@ -7,10 +5,14 @@ export const TAB_ID = {
 } as const;
 
 // "house" | "search" | "notification";
-export type TabId = (typeof TAB_ID)[TabKey];
+// export type TabId = (typeof TAB_ID)[TabKey];
+
+type ValueOf<T> = T[keyof T];
+// type TabId = (typeof TAB_ID)[keyof typeof TAB_ID];
+
+type TabId = ValueOf<typeof TAB_ID>;
 
 // "HOME" | "SEARCH" | "NOTIFICATION";
-type TabKey = keyof typeof TAB_ID;
 
 export const MESSAGES: Record<TabId, string> = {
   [TAB_ID.HOME]: "ここはあなたの家です。ゆっくり過ごしてね。",
