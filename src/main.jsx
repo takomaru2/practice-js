@@ -4,7 +4,7 @@ import { TabApp } from "./apps/tabApp/components/TabApp/index.jsx";
 import "ress";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { TableOfContentsPage } from "./TableOfContentsRouter.jsx";
-import { ColorApp } from "./apps/colorApp/components/ColorApp/index.jsx";
+import { ColorApp } from "./apps/colorApp/components/ColorApp/index.tsx";
 import { ToggleApp } from "./apps/toggleApp/components/ToggleApp/index.jsx";
 import { LikeApp } from "./apps/likeApp/components/LikeApp/index.tsx";
 import { DarkModeApp } from "./apps/darkModeApp/component/DarkModeApp/index.jsx";
