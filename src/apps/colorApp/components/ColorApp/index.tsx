@@ -5,12 +5,12 @@ import { COLORS } from "../../constants/colors.ts";
 import { FC } from "react";
 
 //値から型への変換はほぼtypeofくらいしかない
-type Color = keyof typeof COLORS;
+type Colors = keyof typeof COLORS;
 
 export const ColorApp: FC = () => {
-  const [selectedColorName, setSelectedColorName] = useState<Color>("red");
+  const [selectedColorName, setSelectedColorName] = useState<Colors>("red");
   //asは機能的にしょうがないところは使って良い
-  const colorsArray = Object.keys(COLORS) as Color[];
+  const colorsArray = Object.keys(COLORS) as Colors[];
   //['red', 'blue', 'yellow', 'purple', 'green', 'orange', 'pink', 'gray', 'cyan']
 
   return (
