@@ -1,15 +1,15 @@
 import styles from "./index.module.scss";
 import { AccordionItem } from "../AccordionItem";
-import { useState } from "react";
-
+import { FC, useState } from "react";
+// todo: こっちの型も直してあげろよ
 const ITEMS = [
   { id: 1, question: "フシギダネ", answer: "草🌱" },
   { id: 2, question: "ゼニガメ", answer: "水💧" },
   { id: 3, question: "ヒトカゲ", answer: "炎🔥" },
 ];
 
-export const AccordionApp = () => {
-  const [openIndex, setOpenIndex] = useState<any>([]);
+export const AccordionApp: FC = () => {
+  const [openIndex, setOpenIndex] = useState<any[]>([]);
 
   const openAll = () => {
     setOpenIndex(ITEMS.map((_, index) => index));
