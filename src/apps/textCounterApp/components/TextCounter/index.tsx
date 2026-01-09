@@ -1,19 +1,19 @@
 import styles from "./index.module.scss";
-import { useState } from "react";
+import { FC, useState } from "react";
 
-export const TextCounter = () => {
-  const [text, setText] = useState("");
-  const hasText = text.length > 0;
+export const TextCounter: FC = () => {
+  const [text, setText] = useState<string>("");
+  const hasText: boolean = text.length > 0;
 
-  //行数カウントを関数化する
-  const calculateLineCount = (text) => {
+  const calculateLineCount = (text: string): number => {
     return text === "" ? 0 : text.split("\n").length;
   };
 
-  const lineCount = calculateLineCount(text);
+  //calculateLineCount発火して最終的に何に置き換わる？numberじゃね？
+  const lineCount: number = calculateLineCount(text);
 
   //文字数カウントを関数化する
-  const calculateCharCount = (text) => {
+  const calculateCharCount = (text: string): number => {
     //'12a' => ['1','2','a']
     const chars = [...text];
     const ignoreChars = ["\n", " ", "　"];
@@ -22,9 +22,9 @@ export const TextCounter = () => {
     return visibleChars.length;
   };
 
-  const charCount = calculateCharCount(text);
+  const charCount: number = calculateCharCount(text);
 
-  const handleClearText = () => {
+  const handleClearText = (): void => {
     return setText("");
   };
 
