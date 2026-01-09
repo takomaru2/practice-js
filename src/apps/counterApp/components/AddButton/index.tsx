@@ -1,9 +1,8 @@
 import { Button } from "../Button";
-import { Dispatch, SetStateAction } from "react";
 
 type AddButtonProps = {
   count: number;
-  setCount: Dispatch<SetStateAction<number>>;
+  setCount: (count: number) => void;
   num: number;
 };
 

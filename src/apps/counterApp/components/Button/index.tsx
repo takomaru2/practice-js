@@ -4,7 +4,7 @@ import { MouseEventHandler } from "react";
 type ButtonProps = {
   num: number;
   handleClick: MouseEventHandler<HTMLButtonElement>;
-  operator: any; //todo: ここなんやねん
+  operator: string;
 };
 
 export const Button = ({ num, handleClick, operator }: ButtonProps) => {

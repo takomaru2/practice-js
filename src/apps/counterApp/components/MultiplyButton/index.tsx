@@ -1,9 +1,8 @@
 import { Button } from "../Button/index.tsx";
-import { Dispatch, SetStateAction } from "react";
 
 type MultiplyButtonProps = {
   count: number;
-  setCount: Dispatch<SetStateAction<number>>;
+  setCount: (count: number) => void;
   num: number;
 };
 
