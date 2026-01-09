@@ -17,11 +17,11 @@ const ITEMS: Items[] = [
 export const AccordionApp: FC = () => {
   const [openIndex, setOpenIndex] = useState<number[]>([]);
 
-  const openAll: () => void = () => {
+  const openAll = (): void => {
     setOpenIndex(ITEMS.map((_, index) => index));
   };
 
-  const closeAll: () => void = () => {
+  const closeAll = (): void => {
     setOpenIndex([]);
   };
 
