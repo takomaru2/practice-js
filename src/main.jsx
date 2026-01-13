@@ -11,7 +11,7 @@ import { DarkModeApp } from "./apps/darkModeApp/component/DarkModeApp/index.tsx"
 import { AccordionApp } from "./apps/accordionApp/components/AccordionApp/index.jsx";
 import { TextCounter } from "./apps/textCounterApp/components/TextCounter/index.tsx";
 import { ModalApp } from "./apps/modalApp/components/ModalApp/index.tsx";
-import { ProgressApp } from "./apps/progressApp/components/ProgressApp/index.jsx";
+import { ProgressApp } from "./apps/progressApp/components/ProgressApp/index.tsx";
 import React from "react";
 
 createRoot(document.getElementById("root")).render(

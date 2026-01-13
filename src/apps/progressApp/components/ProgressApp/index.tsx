@@ -1,9 +1,10 @@
 import styles from "./index.module.scss";
-import { Button } from "../Button/index.jsx";
-import { ProgressBar } from "../ProgressBar/index.jsx";
-import { useProgress } from "../../../../hooks/useProgress.js";
+import { Button } from "../Button/index.tsx";
+import { ProgressBar } from "../ProgressBar";
+import { useProgress } from "../../../../hooks/useProgress.ts";
+import { FC } from "react";
 
-export const ProgressApp = () => {
+export const ProgressApp: FC = () => {
   const { progress, isStart, isCompleted, minus, plus, reset, complete } =
     useProgress();
 
