@@ -1,7 +1,22 @@
 import styles from "./index.module.scss";
 
+// todo:sizeやcolorやlabelはもっと厳密な型がつけれそう
+type ButtonProps = {
+  onClick: () => void;
+  label: string;
+  isDisabled: boolean;
+  size: string;
+  color: string;
+};
+
 //colorはgreen,blue,grayが入ってくる想定
-export const Button = ({ onClick, label, isDisabled, size, color }) => {
+export const Button = ({
+  onClick,
+  label,
+  isDisabled,
+  size,
+  color,
+}: ButtonProps) => {
   const colorStyle = isDisabled ? {} : getColorStyle(color);
 
   const sizeStyle = getSizeStyle(size);
@@ -19,7 +34,7 @@ export const Button = ({ onClick, label, isDisabled, size, color }) => {
 };
 
 // 引数は文字列,戻り値はobj
-const getColorStyle = (color) => {
+const getColorStyle = (color: string) => {
   let colorStyle;
 
   switch (color) {
@@ -38,7 +53,7 @@ const getColorStyle = (color) => {
   return colorStyle;
 };
 
-const getSizeStyle = (size) => {
+const getSizeStyle = (size: string) => {
   let sizeStyle;
 
   switch (size) {
