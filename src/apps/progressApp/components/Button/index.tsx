@@ -37,26 +37,11 @@ export const Button = ({
 };
 
 // 引数は文字列,戻り値はobj
-const getColorStyle = (color: string) => {
-  let colorStyle;
-
-  switch (color) {
-    case "green":
-      colorStyle = { backgroundColor: "green", color: "white" };
-      break;
-    case "blue":
-      colorStyle = { backgroundColor: "blue", color: "white" };
-      break;
-    case "gray":
-      colorStyle = { backgroundColor: "lightGray", color: "white" };
-      break;
-    default:
-  }
-
-  return colorStyle;
+const getColorStyle = (color: ButtonColor) => {
+  return { backgroundColor: color, color: "white" };
 };
 
-const getSizeStyle = (size: string) => {
+const getSizeStyle = (size: ButtonSize) => {
   let sizeStyle;
 
   switch (size) {
