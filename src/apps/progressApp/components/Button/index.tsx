@@ -1,12 +1,15 @@
 import styles from "./index.module.scss";
 
 // todo:sizeやcolorやlabelはもっと厳密な型がつけれそう
+type ButtonSize = "large" | "small";
+type ButtonColor = "green" | "blue" | "gray";
+
 type ButtonProps = {
   onClick: () => void;
   label: string;
   isDisabled: boolean;
-  size: string;
-  color: string;
+  size: ButtonSize;
+  color: ButtonColor;
 };
 
 //colorはgreen,blue,grayが入ってくる想定
