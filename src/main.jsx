@@ -15,7 +15,13 @@ import { ModalApp } from "./apps/modalApp/components/ModalApp/index.tsx";
 import { ProgressApp } from "./apps/progressApp/components/ProgressApp/index.tsx";
 import { CalculatorApp } from "./apps/calculatorApp/components/CalculatorApp/index.tsx";
 
+// const PAGE = {
+//   COUNTER: { path: "/counter-app", name: "カウンターアプリ" },
+//   COLOR: { path: "/color-app", name: "カラーアプリ" },
+// };
+
 createRoot(document.getElementById("root")).render(
+  // todo: Routerコンポーネントを作成し、Routes定義を移動する（責務分離のため）
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<TableOfContentsPage />} />
