@@ -1,4 +1,5 @@
 import { createRoot } from "react-dom/client";
+import React from "react";
 import { CounterApp } from "./apps/counterApp/components/CounterApp";
 import { TabApp } from "./apps/tabApp/components/TabApp/index.jsx";
 import "ress";
@@ -12,7 +13,7 @@ import { AccordionApp } from "./apps/accordionApp/components/AccordionApp/index.
 import { TextCounter } from "./apps/textCounterApp/components/TextCounter/index.tsx";
 import { ModalApp } from "./apps/modalApp/components/ModalApp/index.tsx";
 import { ProgressApp } from "./apps/progressApp/components/ProgressApp/index.tsx";
-import React from "react";
+import { CalculatorApp } from "./apps/calculatorApp/components/CalculatorApp/index.tsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -28,6 +29,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="/text-counter-app" element={<TextCounter />} />
       <Route path="/modal-app" element={<ModalApp />} />
       <Route path="/progress-app" element={<ProgressApp />} />
+      <Route path="/calculator-app" element={<CalculatorApp />} />
     </Routes>
   </BrowserRouter>,
 );
