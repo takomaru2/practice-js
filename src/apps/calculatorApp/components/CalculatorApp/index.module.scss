@@ -1,0 +1,67 @@
+.container {
+  background: linear-gradient(#4169e1, #00008b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.pageTitle {
+  font-weight: bold;
+  text-align: center;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 200px;
+  min-height: 30px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+
+  margin-top: 10px;
+}
+
+.submitButton {
+  color: whitesmoke;
+  background-color: #4169e1;
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resetButton {
+  color: dimgray;
+  background-color: lightgrey;
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
