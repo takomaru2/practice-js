@@ -14,20 +14,6 @@ export const CalculatorApp = () => {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  // todo: 見直しの結果こいつらは必要なのか考える
-  const plus = (a: number, b: number): number => {
-    return a + b;
-  };
-  const minus = (a: number, b: number): number => {
-    return a - b;
-  };
-  const multiply = (a: number, b: number): number => {
-    return a * b;
-  };
-  const divided = (a: number, b: number): number => {
-    return a / b;
-  };
-
   // todo: calc関数なのに他のことも受け持ちすぎている。関数の粒度見直したい
   const calc = () => {
     // 入力欄１と入力欄２のどちらか入力されていない場合
@@ -49,16 +35,16 @@ export const CalculatorApp = () => {
 
     switch (operator) {
       case "+":
-        setResult(plus(firstNumber, secondNumber));
+        setResult(firstNumber + secondNumber);
         break;
       case "-":
-        setResult(minus(firstNumber, secondNumber));
+        setResult(firstNumber - secondNumber);
         break;
       case "x":
-        setResult(multiply(firstNumber, secondNumber));
+        setResult(firstNumber * secondNumber);
         break;
       case "÷":
-        setResult(divided(firstNumber, secondNumber));
+        setResult(firstNumber / secondNumber);
         break;
     }
     setShow(true);
