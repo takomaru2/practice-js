@@ -43,17 +43,23 @@ export const CalculatorApp = () => {
       setErrorMessage("0で割ることはできません");
       return setShowError(true);
     }
-    // todo: if分地獄脱したい
+
     const firstNumber = Number(firstValue);
     const secondNumber = Number(secondValue);
-    if (operator === "+") {
-      setResult(plus(firstNumber, secondNumber));
-    } else if (operator === "-") {
-      setResult(minus(firstNumber, secondNumber));
-    } else if (operator === "x") {
-      setResult(multiply(firstNumber, secondNumber));
-    } else if (operator === "÷") {
-      setResult(divided(firstNumber, secondNumber));
+
+    switch (operator) {
+      case "+":
+        setResult(plus(firstNumber, secondNumber));
+        break;
+      case "-":
+        setResult(minus(firstNumber, secondNumber));
+        break;
+      case "x":
+        setResult(multiply(firstNumber, secondNumber));
+        break;
+      case "÷":
+        setResult(divided(firstNumber, secondNumber));
+        break;
     }
     setShow(true);
   };
