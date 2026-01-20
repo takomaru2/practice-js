@@ -4,36 +4,37 @@ import { NumberInputField } from "../NumberInputField";
 import { OperatorSelect } from "../OperatorSelect";
 import { Button } from "../Button";
 
+type Operator = "+" | "-" | "x" | "÷";
+
+const calc = (
+  firstNumber: number,
+  secondNumber: number,
+  operator: Operator,
+): number => {
+  switch (operator) {
+    case "+":
+      return firstNumber + secondNumber;
+    case "-":
+      return firstNumber - secondNumber;
+    case "x":
+      return firstNumber * secondNumber;
+    case "÷":
+      return firstNumber / secondNumber;
+  }
+};
+
 export const CalculatorApp = () => {
   // todo: stateの数や型見直す
   // why:firstValueがstring型なの?eventの型に合わせている設計
   const [firstValue, setFirstValue] = useState<string>("");
   const [secondValue, setSecondValue] = useState<string>("");
-  const [operator, setOperator] = useState<string>("+");
+  const [operator, setOperator] = useState<Operator>("+");
   const [result, setResult] = useState<number | null>(null);
   const [show, setShow] = useState(false);
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  // todo: ピュアになりたい
-  const calc = (firstNumber: number, secondNumber: number): void => {
-    switch (operator) {
-      case "+":
-        setResult(firstNumber + secondNumber);
-        break;
-      case "-":
-        setResult(firstNumber - secondNumber);
-        break;
-      case "x":
-        setResult(firstNumber * secondNumber);
-        break;
-      case "÷":
-        setResult(firstNumber / secondNumber);
-        break;
-    }
-  };
-
-  // todo: calc関数なのに他のことも受け持ちすぎている。関数の粒度見直したい
+  // todo: calc関数なのに他のことも受け持ちすぎている。関数の粒度見直したいというかonClickに渡すのはこいつしかいないから関数名を変更してrefactorしたい
   const handleClickCalcButton = () => {
     // 入力欄１と入力欄２のどちらか入力されていない場合
     if (firstValue === "" || secondValue === "") {
@@ -49,7 +50,9 @@ export const CalculatorApp = () => {
       return setShowError(true);
     }
 
-    calc(Number(firstValue), Number(secondValue));
+    const calcResult = calc(Number(firstValue), Number(secondValue), operator);
+
+    setResult(calcResult);
 
     setShow(true);
   };
@@ -78,7 +81,7 @@ export const CalculatorApp = () => {
         <OperatorSelect
           label={"演算子"}
           value={operator}
-          onChange={(event) => setOperator(event.target.value)}
+          onChange={(event) => setOperator(event.target.value as Operator)}
         />
 
         <NumberInputField
