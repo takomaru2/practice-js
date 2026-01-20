@@ -1,7 +1,11 @@
 import styles from "./index.module.scss";
 import { useState } from "react";
+import { NumberInputField } from "../NumberInputField";
+import { OperatorSelect } from "../OperatorSelect";
+import { Button } from "../Button";
 
 export const CalculatorApp = () => {
+  // todo: stateの数や型見直す
   const [firstValue, setFirstValue] = useState<string>("");
   const [secondValue, setSecondValue] = useState<string>("");
   const [operator, setOperator] = useState<string>("+");
@@ -9,6 +13,8 @@ export const CalculatorApp = () => {
   const [show, setShow] = useState(false);
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  // todo: 見直しの結果こいつらは必要なのか考える
   const plus = (a: number, b: number): number => {
     return a + b;
   };
@@ -22,9 +28,7 @@ export const CalculatorApp = () => {
     return a / b;
   };
 
-  //もし初期値がnumberだったらplusはfirstValue + secondValueなだけか
-
-  // todo: calc関数作る。stateをnumber に変換する。演算子が何かを見て渡す関数を選ぶ
+  // todo: calc関数なのに他のことも受け持ちすぎている。関数の粒度見直したい
   const calc = () => {
     // 入力欄１と入力欄２のどちらか入力されていない場合
     if (firstValue === "" || secondValue === "") {
@@ -39,7 +43,7 @@ export const CalculatorApp = () => {
       setErrorMessage("0で割ることはできません");
       return setShowError(true);
     }
-
+    // todo: if分地獄脱したい
     const firstNumber = Number(firstValue);
     const secondNumber = Number(secondValue);
     if (operator === "+") {
@@ -54,6 +58,7 @@ export const CalculatorApp = () => {
     setShow(true);
   };
 
+  // todo: よくわからんけどあんま良くなさそう！どうしよ!
   const reset = () => {
     setResult(null);
     setFirstValue("");
@@ -68,52 +73,29 @@ export const CalculatorApp = () => {
     <div className={styles.container}>
       <div className={styles.card}>
         <h1 className={styles.pageTitle}>計算フォーム</h1>
-        <label className={styles.inputGroup}>
-          <span className={styles.label}>数値１</span>
-          <input
-            type="number"
-            className={styles.input}
-            placeholder={"数値を入力してくれ"}
-            value={firstValue}
-            onChange={(event) => setFirstValue(event.target.value)}
-          />
-        </label>
-        <label className={styles.inputGroup}>
-          <span className={styles.label}>演算子</span>
-          <select
-            name="selectedOperator"
-            className={styles.input}
-            value={operator}
-            onChange={(event) => setOperator(event.target.value)}
-          >
-            <option value={"+"}>+</option>
-            <option value={"-"}>-</option>
-            <option value={"x"}>x</option>
-            <option value={"÷"}>÷</option>
-          </select>
-        </label>
-        <label className={styles.inputGroup}>
-          <span className={styles.label}>数値2</span>
-          <input
-            type="number"
-            className={styles.input}
-            placeholder={"数値を入力してくれ"}
-            value={secondValue}
-            onChange={(event) => setSecondValue(event.target.value)}
-          />
-        </label>
+        <NumberInputField
+          label={"数値１"}
+          value={firstValue}
+          onChange={(event) => setFirstValue(event.target.value)}
+        />
+
+        <OperatorSelect
+          label={"演算子"}
+          value={operator}
+          onChange={(event) => setOperator(event.target.value)}
+        />
+
+        <NumberInputField
+          label={"数値2"}
+          value={secondValue}
+          onChange={(event) => setSecondValue(event.target.value)}
+        />
+
         <div className={styles.buttonGroup}>
-          <button className={styles.submitButton} onClick={calc}>
-            計算する
-          </button>
-          <button
-            type={"button"}
-            className={styles.resetButton}
-            onClick={reset}
-          >
-            リセッツ
-          </button>
+          <Button onClick={calc} label={"計算する"} variant={"primary"} />
+          <Button onClick={reset} label={"リセッツ"} variant={"secondary"} />
         </div>
+
         {show && (
           <div className={styles.resultGroup}>
             <div className={styles.resultLabel}>結果</div>
