@@ -6,6 +6,7 @@ import { Button } from "../Button";
 
 export const CalculatorApp = () => {
   // todo: stateの数や型見直す
+  // why:firstValueがstring型なの?eventの型に合わせている設計
   const [firstValue, setFirstValue] = useState<string>("");
   const [secondValue, setSecondValue] = useState<string>("");
   const [operator, setOperator] = useState<string>("+");
@@ -14,25 +15,8 @@ export const CalculatorApp = () => {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  // todo: calc関数なのに他のことも受け持ちすぎている。関数の粒度見直したい
-  const calc = () => {
-    // 入力欄１と入力欄２のどちらか入力されていない場合
-    if (firstValue === "" || secondValue === "") {
-      setErrorMessage("有効な数値を入力してください");
-      return setShowError(true);
-    } else {
-      setErrorMessage("");
-      setShowError(false);
-    }
-
-    if (operator === "÷" && secondValue === "0") {
-      setErrorMessage("0で割ることはできません");
-      return setShowError(true);
-    }
-
-    const firstNumber = Number(firstValue);
-    const secondNumber = Number(secondValue);
-
+  // todo: ピュアになりたい
+  const calc = (firstNumber: number, secondNumber: number): void => {
     switch (operator) {
       case "+":
         setResult(firstNumber + secondNumber);
@@ -47,6 +31,26 @@ export const CalculatorApp = () => {
         setResult(firstNumber / secondNumber);
         break;
     }
+  };
+
+  // todo: calc関数なのに他のことも受け持ちすぎている。関数の粒度見直したい
+  const handleClickCalcButton = () => {
+    // 入力欄１と入力欄２のどちらか入力されていない場合
+    if (firstValue === "" || secondValue === "") {
+      setErrorMessage("有効な数値を入力してください");
+      return setShowError(true);
+    } else {
+      setErrorMessage("");
+      setShowError(false);
+    }
+
+    if (operator === "÷" && secondValue === "0") {
+      setErrorMessage("0で割ることはできません");
+      return setShowError(true);
+    }
+
+    calc(Number(firstValue), Number(secondValue));
+
     setShow(true);
   };
 
@@ -84,7 +88,11 @@ export const CalculatorApp = () => {
         />
 
         <div className={styles.buttonGroup}>
-          <Button onClick={calc} label={"計算する"} variant={"primary"} />
+          <Button
+            onClick={handleClickCalcButton}
+            label={"計算する"}
+            variant={"primary"}
+          />
           <Button onClick={reset} label={"リセッツ"} variant={"secondary"} />
         </div>
 
