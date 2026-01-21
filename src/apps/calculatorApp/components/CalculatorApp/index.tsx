@@ -1,7 +1,7 @@
 import styles from "./index.module.scss";
-import { useState } from "react";
+import { FC, MouseEventHandler, useState } from "react";
 import { NumberInputField } from "../NumberInputField";
-import { OperatorSelect } from "../OperatorSelect";
+import { SelectField } from "../SelectField";
 import { Button } from "../Button";
 
 type Operator = "+" | "-" | "x" | "÷";
@@ -22,13 +22,12 @@ const calc = (
       return firstNumber / secondNumber;
   }
 };
-
-export const CalculatorApp = () => {
-  // todo: stateの数や型見直す
+const operatorInitialValue = "+";
+export const CalculatorApp: FC = () => {
   // why:firstValueがstring型なの?eventの型に合わせている設計
   const [firstValue, setFirstValue] = useState<string>("");
   const [secondValue, setSecondValue] = useState<string>("");
-  const [operator, setOperator] = useState<Operator>("+");
+  const [operator, setOperator] = useState<Operator>(operatorInitialValue);
   const [result, setResult] = useState<number | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -36,33 +35,32 @@ export const CalculatorApp = () => {
   const hasResult = result !== null;
   const hasError = errorMessage !== "";
 
-  // todo: calc関数なのに他のことも受け持ちすぎている。関数の粒度見直したいというかonClickに渡すのはこいつしかいないから関数名を変更してrefactorしたい
-  const handleClickCalcButton = () => {
-    // todo: 一度結果を表示した後にerrorが出るような操作をした時に結果とerrorがどちらも表示されている
-    // 入力欄１と入力欄２のどちらか入力されていない場合
+  const handleClickCalcButton: MouseEventHandler<HTMLButtonElement> = () => {
+    // エラーメッセージ1の表示
     if (firstValue === "" || secondValue === "") {
       setErrorMessage("有効な数値を入力してください");
       setResult(null);
       return;
     }
-
+    // エラーメッセージ2の表示
     if (operator === "÷" && secondValue === "0") {
       setErrorMessage("0で割ることはできません");
       setResult(null);
       return;
     }
 
+    // 計算結果担当
     const calcResult = calc(Number(firstValue), Number(secondValue), operator);
-
     setResult(calcResult);
   };
 
-  // todo: よくわからんけどあんま良くなさそう！どうしよ!
-  const reset = () => {
-    setResult(null);
+  // todo: 初期値にしているがstateの初期値
+  // stateを全てを初期値にする担当
+  const reset: MouseEventHandler<HTMLButtonElement> = () => {
     setFirstValue("");
     setSecondValue("");
-    setOperator("+");
+    setOperator(operatorInitialValue);
+    setResult(null);
     setErrorMessage("");
   };
 
@@ -73,18 +71,27 @@ export const CalculatorApp = () => {
         <NumberInputField
           label={"数値１"}
           value={firstValue}
+          placeholder={"数値を入力してくれ"}
           onChange={(event) => setFirstValue(event.target.value)}
         />
 
-        <OperatorSelect
+        <SelectField
           label={"演算子"}
           value={operator}
+          name={"selectedOperator"}
+          options={[
+            { value: "+", label: "足す" },
+            { value: "-", label: "引く" },
+            { value: "x", label: "かける" },
+            { value: "÷", label: "割る" },
+          ]}
           onChange={(event) => setOperator(event.target.value as Operator)}
         />
 
         <NumberInputField
           label={"数値2"}
           value={secondValue}
+          placeholder={"数値を入力してくれ"}
           onChange={(event) => setSecondValue(event.target.value)}
         />
 

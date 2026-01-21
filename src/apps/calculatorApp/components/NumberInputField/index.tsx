@@ -6,6 +6,7 @@ import { ChangeEventHandler } from "react";
 type NumberInputFieldProps = {
   label: string;
   value: string;
+  placeholder: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
@@ -13,6 +14,7 @@ export const NumberInputField = ({
   label,
   value,
   onChange,
+  placeholder,
 }: NumberInputFieldProps) => {
   return (
     <label className={styles.inputGroup}>
@@ -20,7 +22,7 @@ export const NumberInputField = ({
       <input
         type="number"
         className={styles.input}
-        placeholder={"数値を入力してくれ"}
+        placeholder={placeholder}
         value={value}
         onChange={onChange}
       />
