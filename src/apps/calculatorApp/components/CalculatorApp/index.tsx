@@ -26,38 +26,29 @@ const calc = (
 export const CalculatorApp = () => {
   // todo: stateの数や型見直す
   // why:firstValueがstring型なの?eventの型に合わせている設計
-  //上４つは確実に要りそうなstate
   const [firstValue, setFirstValue] = useState<string>("");
   const [secondValue, setSecondValue] = useState<string>("");
   const [operator, setOperator] = useState<Operator>("+");
   const [result, setResult] = useState<number | null>(null);
-
-  // const [showResult, setShowResult] = useState(false); //消せれるかも
-  // const [showError, setShowError] = useState(false); //消せれるかも
   const [errorMessage, setErrorMessage] = useState("");
 
-  /*表示を担うstateを他のstateから導き出せるのではないか？
-
-   * 例えばshowResultをresultから導き出す。
-   * result!==nullならば画面を表示。booleanに評価されるので
-   *
-   * 例えばshowErrorをerrorMessageから導き出す。
-   * errorMessage!==""ならば画面を表示。booleanに評価されるので
-   * */
-
-  const showResult = result !== null;
-  const showError = errorMessage !== "";
+  //派生stateができたぜ
+  const hasResult = result !== null;
+  const hasError = errorMessage !== "";
 
   // todo: calc関数なのに他のことも受け持ちすぎている。関数の粒度見直したいというかonClickに渡すのはこいつしかいないから関数名を変更してrefactorしたい
   const handleClickCalcButton = () => {
+    // todo: 一度結果を表示した後にerrorが出るような操作をした時に結果とerrorがどちらも表示されている
     // 入力欄１と入力欄２のどちらか入力されていない場合
     if (firstValue === "" || secondValue === "") {
       setErrorMessage("有効な数値を入力してください");
+      setResult(null);
       return;
     }
 
     if (operator === "÷" && secondValue === "0") {
       setErrorMessage("0で割ることはできません");
+      setResult(null);
       return;
     }
 
@@ -106,13 +97,13 @@ export const CalculatorApp = () => {
           <Button onClick={reset} label={"リセッツ"} variant={"secondary"} />
         </div>
 
-        {showResult && (
+        {hasResult && (
           <div className={styles.resultGroup}>
             <div className={styles.resultLabel}>結果</div>
             <div className={styles.resultValue}>{result}</div>
           </div>
         )}
-        {showError && <div className={styles.error}>{errorMessage}</div>}
+        {hasError && <div className={styles.error}>{errorMessage}</div>}
       </div>
     </div>
   );
