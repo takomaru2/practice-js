@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import { FC, MouseEventHandler, useState } from "react";
+import { ChangeEvent, FC, MouseEventHandler, useState } from "react";
 import { NumberInputField } from "../NumberInputField";
 import { SelectField } from "../SelectField";
 import { Button } from "../Button";
@@ -25,14 +25,25 @@ const calc = (
 const operatorInitialValue = "+";
 export const CalculatorApp: FC = () => {
   // why:firstValueがstring型なの?eventの型に合わせている設計
-  const [firstValue, setFirstValue] = useState<string>("");
-  const [secondValue, setSecondValue] = useState<string>("");
-  const [operator, setOperator] = useState<Operator>(operatorInitialValue);
-  const [result, setResult] = useState<number | null>(null);
-  const [errorMessage, setErrorMessage] = useState("");
 
-  //派生stateができたぜ
+  const [firstValue, setFirstValue] = useState<string>("");
+  const handleChangeFirstNumber = (
+    event: ChangeEvent<HTMLInputElement>,
+  ): void => setFirstValue(event.target.value);
+
+  const [secondValue, setSecondValue] = useState<string>("");
+  const handleChangeSecondNumber = (
+    event: ChangeEvent<HTMLInputElement>,
+  ): void => setSecondValue(event.target.value);
+
+  const [operator, setOperator] = useState<Operator>(operatorInitialValue);
+  const handleChangeOperator = (event: ChangeEvent<HTMLSelectElement>): void =>
+    setOperator(event.target.value as Operator);
+
+  const [result, setResult] = useState<number | null>(null);
   const hasResult = result !== null;
+
+  const [errorMessage, setErrorMessage] = useState("");
   const hasError = errorMessage !== "";
 
   const handleClickCalcButton: MouseEventHandler<HTMLButtonElement> = () => {
@@ -42,6 +53,7 @@ export const CalculatorApp: FC = () => {
       setResult(null);
       return;
     }
+
     // エラーメッセージ2の表示
     if (operator === "÷" && secondValue === "0") {
       setErrorMessage("0で割ることはできません");
@@ -54,7 +66,6 @@ export const CalculatorApp: FC = () => {
     setResult(calcResult);
   };
 
-  // todo: 初期値にしているがstateの初期値
   // stateを全てを初期値にする担当
   const reset: MouseEventHandler<HTMLButtonElement> = () => {
     setFirstValue("");
@@ -72,7 +83,7 @@ export const CalculatorApp: FC = () => {
           label={"数値１"}
           value={firstValue}
           placeholder={"数値を入力してくれ"}
-          onChange={(event) => setFirstValue(event.target.value)}
+          onChange={handleChangeFirstNumber}
         />
 
         <SelectField
@@ -85,14 +96,14 @@ export const CalculatorApp: FC = () => {
             { value: "x", label: "かける" },
             { value: "÷", label: "割る" },
           ]}
-          onChange={(event) => setOperator(event.target.value as Operator)}
+          onChange={handleChangeOperator}
         />
 
         <NumberInputField
           label={"数値2"}
           value={secondValue}
           placeholder={"数値を入力してくれ"}
-          onChange={(event) => setSecondValue(event.target.value)}
+          onChange={handleChangeSecondNumber}
         />
 
         <div className={styles.buttonGroup}>
