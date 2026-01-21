@@ -26,35 +26,44 @@ const calc = (
 export const CalculatorApp = () => {
   // todo: stateの数や型見直す
   // why:firstValueがstring型なの?eventの型に合わせている設計
+  //上４つは確実に要りそうなstate
   const [firstValue, setFirstValue] = useState<string>("");
   const [secondValue, setSecondValue] = useState<string>("");
   const [operator, setOperator] = useState<Operator>("+");
   const [result, setResult] = useState<number | null>(null);
-  const [show, setShow] = useState(false);
-  const [showError, setShowError] = useState(false);
+
+  // const [showResult, setShowResult] = useState(false); //消せれるかも
+  // const [showError, setShowError] = useState(false); //消せれるかも
   const [errorMessage, setErrorMessage] = useState("");
+
+  /*表示を担うstateを他のstateから導き出せるのではないか？
+
+   * 例えばshowResultをresultから導き出す。
+   * result!==nullならば画面を表示。booleanに評価されるので
+   *
+   * 例えばshowErrorをerrorMessageから導き出す。
+   * errorMessage!==""ならば画面を表示。booleanに評価されるので
+   * */
+
+  const showResult = result !== null;
+  const showError = errorMessage !== "";
 
   // todo: calc関数なのに他のことも受け持ちすぎている。関数の粒度見直したいというかonClickに渡すのはこいつしかいないから関数名を変更してrefactorしたい
   const handleClickCalcButton = () => {
     // 入力欄１と入力欄２のどちらか入力されていない場合
     if (firstValue === "" || secondValue === "") {
       setErrorMessage("有効な数値を入力してください");
-      return setShowError(true);
-    } else {
-      setErrorMessage("");
-      setShowError(false);
+      return;
     }
 
     if (operator === "÷" && secondValue === "0") {
       setErrorMessage("0で割ることはできません");
-      return setShowError(true);
+      return;
     }
 
     const calcResult = calc(Number(firstValue), Number(secondValue), operator);
 
     setResult(calcResult);
-
-    setShow(true);
   };
 
   // todo: よくわからんけどあんま良くなさそう！どうしよ!
@@ -63,8 +72,6 @@ export const CalculatorApp = () => {
     setFirstValue("");
     setSecondValue("");
     setOperator("+");
-    setShow(false);
-    setShowError(false);
     setErrorMessage("");
   };
 
@@ -99,7 +106,7 @@ export const CalculatorApp = () => {
           <Button onClick={reset} label={"リセッツ"} variant={"secondary"} />
         </div>
 
-        {show && (
+        {showResult && (
           <div className={styles.resultGroup}>
             <div className={styles.resultLabel}>結果</div>
             <div className={styles.resultValue}>{result}</div>
