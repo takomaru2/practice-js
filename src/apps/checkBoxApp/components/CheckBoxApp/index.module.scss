@@ -1,0 +1,38 @@
+.container {
+  max-width: 600px;
+  padding: 20px;
+  margin-inline: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.head {
+  border-bottom: 2px solid #dee2e6;
+}
+
+.row {
+  border-bottom: 2px solid #dee2e6;
+  background-color: #f8f9fa;
+}
+
+.checkboxColumn {
+  padding: 10px;
+}
+
+.fuga {
+  border-bottom: 1px solid #e9ecef;
+}
+
+th {
+  text-align: left;
+  padding-right: 20px;
+}

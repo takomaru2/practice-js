@@ -12,6 +12,8 @@ const pages = [
   { path: "/text-counter-app", name: "文字数カウンター" },
   { path: "/modal-app", name: "モーダル" },
   { path: "/progress-app", name: "プログレスバー" },
+  { path: "/progress-app", name: "プログレスバー" },
+  { path: "/checkBoxApp", name: "モーニングルーティン" },
 ];
 
 export const TableOfContentsPage = () => {

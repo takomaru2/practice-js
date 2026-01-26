@@ -13,6 +13,7 @@ import { TextCounter } from "./apps/textCounterApp/components/TextCounter/index.
 import { ModalApp } from "./apps/modalApp/components/ModalApp/index.tsx";
 import { ProgressApp } from "./apps/progressApp/components/ProgressApp/index.tsx";
 import React from "react";
+import { CheckBoxApp } from "./apps/checkBoxApp/components/CheckBoxApp/index.js";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -28,6 +29,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="/text-counter-app" element={<TextCounter />} />
       <Route path="/modal-app" element={<ModalApp />} />
       <Route path="/progress-app" element={<ProgressApp />} />
+      <Route path="/checkBoxApp" element={<CheckBoxApp />} />
     </Routes>
   </BrowserRouter>,
 );
