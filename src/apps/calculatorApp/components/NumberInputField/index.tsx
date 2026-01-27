@@ -1,4 +1,4 @@
-import styles from "../FormField/index.module.scss";
+import styles from "./index.module.scss";
 import { ChangeEventHandler } from "react";
 
 type NumberInputFieldProps = {
@@ -15,7 +15,7 @@ export const NumberInputField = ({
   placeholder,
 }: NumberInputFieldProps) => {
   return (
-    <label className={styles.inputGroup}>
+    <label className={styles.inputField}>
       <span className={styles.label}>{label}</span>
       <input
         type="number"

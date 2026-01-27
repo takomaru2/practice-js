@@ -1,4 +1,4 @@
-import styles from "../FormField/index.module.scss";
+import styles from "./index.module.scss";
 import { ChangeEventHandler } from "react";
 
 type SelectFieldProps = {
@@ -17,11 +17,11 @@ export const SelectField = ({
   name,
 }: SelectFieldProps) => {
   return (
-    <label className={styles.inputGroup}>
+    <label className={styles.selectField}>
       <span className={styles.label}>{label}</span>
       <select
         name={name}
-        className={styles.input}
+        className={styles.select}
         value={value}
         onChange={onChange}
       >
