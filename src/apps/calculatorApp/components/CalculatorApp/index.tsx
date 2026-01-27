@@ -47,17 +47,17 @@ export const CalculatorApp: FC = () => {
   const hasError = errorMessage !== "";
 
   const handleClickCalcButton: MouseEventHandler<HTMLButtonElement> = () => {
+    clearResultAndError();
+
     // エラーメッセージ1の表示
     if (firstValue === "" || secondValue === "") {
       setErrorMessage("有効な数値を入力してください");
-      setResult(null);
       return;
     }
 
     // エラーメッセージ2の表示
     if (operator === "÷" && secondValue === "0") {
       setErrorMessage("0で割ることはできません");
-      setResult(null);
       return;
     }
 
@@ -71,6 +71,12 @@ export const CalculatorApp: FC = () => {
     setFirstValue("");
     setSecondValue("");
     setOperator(operatorInitialValue);
+    setResult(null);
+    setErrorMessage("");
+  };
+
+  // 初期化
+  const clearResultAndError = () => {
     setResult(null);
     setErrorMessage("");
   };
