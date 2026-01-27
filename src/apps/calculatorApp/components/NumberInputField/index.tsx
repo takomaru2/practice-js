@@ -1,8 +1,6 @@
 import styles from "../FormField/index.module.scss";
 import { ChangeEventHandler } from "react";
 
-// コンポーネント抽出。型から書いてみるか
-
 type NumberInputFieldProps = {
   label: string;
   value: string;

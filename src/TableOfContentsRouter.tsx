@@ -1,10 +1,21 @@
 import { Link } from "react-router";
 import styles from "./index.module.scss";
+import { FC } from "react";
 
-//
 // 一覧表示やルーティングで共通利用するページ定義。
 // 汎用的なデータ構造にしているのは、将来どこからでも再利用できるようにするためという意図を感じるようでし。
-const PAGES = [
+// const PAGE = {
+//   COUNTER: { path: "/counter-app", name: "カウンターアプリ" },
+//   COLOR: { path: "/color-app", name: "カラーアプリ" },
+// };
+
+type Page = {
+  path: string;
+  name: string;
+  level: string;
+};
+
+const PAGES: Page[] = [
   { path: "/counter-app", name: "カウンターアプリ", level: "beginner" },
   { path: "/color-app", name: "カラーアプリ", level: "beginner" },
   { path: "/tab-app", name: "ボトムタブ", level: "beginner" },
@@ -38,7 +49,7 @@ const intermediatePages = PAGES.filter((page) => page.level === "intermediate");
 //   intermediate: [{ path: "/calculator-app", name: "計算フォーム" }],
 // };
 
-export const TableOfContentsPage = () => {
+export const TableOfContentsPage: FC = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.pageTitle}>Practice App</h1>
