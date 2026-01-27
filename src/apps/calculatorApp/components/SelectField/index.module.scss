@@ -1,0 +1,22 @@
+.selectField {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  color: #555;
+  font-weight: 600;
+}
+
+.select {
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+  background-color: #fff;
+
+  &::placeholder {
+    color: gray;
+  }
+}

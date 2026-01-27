@@ -1,0 +1,87 @@
+.container {
+  background: linear-gradient(#4169e1, #00008b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.pageTitle {
+  font-weight: bold;
+  text-align: center;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+
+  margin-top: 10px;
+}
+
+.submitButton {
+  color: whitesmoke;
+  background-color: #4169e1;
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resetButton {
+  color: dimgray;
+  background-color: lightgrey;
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.error {
+  background-color: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.resultGroup {
+  margin-top: 24px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.resultLabel {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.resultValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #667eea;
+}
