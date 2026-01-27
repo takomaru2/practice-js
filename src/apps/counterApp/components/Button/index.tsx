@@ -1,6 +1,13 @@
 import styles from "./index.module.scss";
+import { MouseEventHandler } from "react";
 
-export const Button = ({ num, handleClick, operator }) => {
+type ButtonProps = {
+  num: number;
+  handleClick: MouseEventHandler<HTMLButtonElement>;
+  operator: string;
+};
+
+export const Button = ({ num, handleClick, operator }: ButtonProps) => {
   let className;
 
   switch (operator) {

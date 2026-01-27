@@ -1,12 +1,12 @@
 import styles from "./index.module.scss";
-import { useState } from "react";
-import { AddButton } from "../AddButton/index.jsx";
-import { MinusButton } from "../MinusButton/index.jsx";
-import { MultiplyButton } from "../MultiplyButton/index.jsx";
-import { ButtonGroup } from "../ButtonGroup/index.jsx";
+import { FC, useState } from "react";
+import { AddButton } from "../AddButton/index.tsx";
+import { MinusButton } from "../MinusButton";
+import { MultiplyButton } from "../MultiplyButton";
+import { ButtonGroup } from "../ButtonGroup/index.tsx";
 
-export const CounterApp = () => {
-  const [count, setCount] = useState(0);
+export const CounterApp: FC = () => {
+  const [count, setCount] = useState<number>(0);
 
   return (
     <div>
