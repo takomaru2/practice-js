@@ -13,6 +13,7 @@ import { TextCounter } from "./apps/textCounterApp/components/TextCounter";
 import { ModalApp } from "./apps/modalApp/components/ModalApp";
 import { ProgressApp } from "./apps/progressApp/components/ProgressApp";
 import { CalculatorApp } from "./apps/calculatorApp/components/CalculatorApp";
+import { CheckBoxApp } from "./apps/checkBoxApp/components/CheckBoxApp";
 
 const root = document.getElementById("root");
 
@@ -33,6 +34,7 @@ if (root !== null) {
         <Route path="/modal-app" element={<ModalApp />} />
         <Route path="/progress-app" element={<ProgressApp />} />
         <Route path="/calculator-app" element={<CalculatorApp />} />
+        <Route path="/check-box-app" element={<CheckBoxApp />} />
       </Routes>
     </BrowserRouter>,
   );
