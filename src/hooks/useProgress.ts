@@ -1,9 +1,13 @@
 import { useState } from "react";
 
+type SetProgressArg = number | ((prev: number) => number);
+
 export const useProgress = () => {
   const [progress, _setProgress] = useState(MIN);
   //セッターを使って絶対にclampしたいマン
-  const setProgress = (arg) => {
+  // argsの型はnumberかprev
+
+  const setProgress = (arg: SetProgressArg): void => {
     if (typeof arg === "function") {
       _setProgress((prev) => clamp(arg(prev)));
     } else {
@@ -14,17 +18,17 @@ export const useProgress = () => {
   const isStart = progress === MIN;
   const isCompleted = progress === MAX;
 
-  const minus = (n) => {
-    setProgress((prev) => prev - n, MAX);
+  const minus = (n: number) => {
+    setProgress((prev) => prev - n);
   };
 
-  const plus = (n) => {
-    setProgress((prev) => prev + n, MAX);
+  const plus = (n: number) => {
+    setProgress((prev) => prev + n);
   };
 
-  const reset = () => setProgress(MIN);
+  const reset = (): void => setProgress(MIN);
 
-  const complete = () => setProgress(MAX);
+  const complete = (): void => setProgress(MAX);
 
   return {
     progress,
@@ -37,7 +41,7 @@ export const useProgress = () => {
   };
 };
 
-const THRESHOLD = {
+const THRESHOLD: Record<string, number> = {
   MAX: 100,
   MIN: 0,
 };
@@ -48,6 +52,7 @@ const { MAX, MIN } = THRESHOLD;
  * clamp(-5) // 0
  * clamp(105) // 100
  */
-const clamp = (num) => {
+
+const clamp = (num: number): number => {
   return Math.min(MAX, Math.max(MIN, num));
 };

@@ -1,6 +1,10 @@
 import styles from "./index.module.scss";
 
-export const ProgressBar = ({ progress }) => {
+type ProgressBarProps = {
+  progress: number;
+};
+
+export const ProgressBar = ({ progress }: ProgressBarProps) => {
   return (
     <div className={styles.progress}>
       <div className={styles.bar}></div>

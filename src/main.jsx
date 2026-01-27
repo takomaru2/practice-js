@@ -1,17 +1,17 @@
 import { createRoot } from "react-dom/client";
-import { CounterApp } from "./apps/counterApp/components/CounterApp/index.js";
-import { TabApp } from "./apps/tabApp/components/TabApp/index.jsx";
+import { CounterApp } from "./apps/counterApp/components/CounterApp";
+import { TabApp } from "./apps/tabApp/components/TabApp/index.tsx";
 import "ress";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { TableOfContentsPage } from "./TableOfContentsRouter.jsx";
 import { ToggleApp } from "./apps/toggleApp/components/ToggleApp/index.tsx";
 import { ColorApp } from "./apps/colorApp/components/ColorApp/index.tsx";
 import { LikeApp } from "./apps/likeApp/components/LikeApp/index.tsx";
+import { AccordionApp } from "./apps/accordionApp/components/AccordionApp/index.tsx";
 import { DarkModeApp } from "./apps/darkModeApp/component/DarkModeApp/index.tsx";
-import { AccordionApp } from "./apps/accordionApp/components/AccordionApp/index.jsx";
 import { TextCounter } from "./apps/textCounterApp/components/TextCounter/index.tsx";
 import { ModalApp } from "./apps/modalApp/components/ModalApp/index.tsx";
-import { ProgressApp } from "./apps/progressApp/components/ProgressApp/index.jsx";
+import { ProgressApp } from "./apps/progressApp/components/ProgressApp/index.tsx";
 import React from "react";
 
 createRoot(document.getElementById("root")).render(
