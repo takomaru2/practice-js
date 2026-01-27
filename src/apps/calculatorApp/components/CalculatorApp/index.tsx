@@ -22,6 +22,14 @@ const calc = (
       return firstNumber / secondNumber;
   }
 };
+
+const option: { value: Operator; label: string }[] = [
+  { value: "+", label: "足す" },
+  { value: "-", label: "引く" },
+  { value: "x", label: "かける" },
+  { value: "÷", label: "割る" },
+];
+
 const operatorInitialValue = "+";
 export const CalculatorApp: FC = () => {
   // why:firstValueがstring型なの?eventの型に合わせている設計
@@ -96,12 +104,7 @@ export const CalculatorApp: FC = () => {
           label={"演算子"}
           value={operator}
           name={"selectedOperator"}
-          options={[
-            { value: "+", label: "足す" },
-            { value: "-", label: "引く" },
-            { value: "x", label: "かける" },
-            { value: "÷", label: "割る" },
-          ]}
+          options={option}
           onChange={handleChangeOperator}
         />
 
