@@ -24,15 +24,21 @@
   background-color: #f8f9fa;
 }
 
-.checkboxColumn {
+.checkBoxColumn {
   padding: 10px;
+  text-align: left;
 }
 
 .fuga {
   border-bottom: 1px solid #e9ecef;
 }
 
-th {
+.count {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.cell {
   text-align: left;
   padding-right: 20px;
 }
