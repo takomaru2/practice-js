@@ -1,46 +1,49 @@
 import styles from "./index.module.scss";
 import { useRef, useState } from "react";
 
+const ITEMS = [
+  { id: 1, task: "スクワット", time: "120分" },
+  { id: 2, task: "ダッシュ", time: "120分" },
+];
+
 export const CheckBoxApp = () => {
-  const [check1, setCheck1] = useState(false);
-  const [check2, setCheck2] = useState(false);
+  // number配列だから[0,1,2]みたいなデータ型
+  const [checkIds, setCheckIds] = useState<number[]>([]);
 
-  const hasChecked = check1 || check2;
-  const checks = [check1, check2];
-  // trueなやつ数える。filterがtruthyなものを返すのだ。つまりtrueの数だけ数えれる
-  const count = checks.filter(Boolean).length;
-  const total = checks.length;
+  // チェックが一つでもついているか
+  const hasChecked = checkIds.length > 0;
+  // いくつチェックがついているか
+  const count = checkIds.length;
+  // チェック項目の総数
+  const total = ITEMS.length;
+  // 全部チェックされているかが入っているか
+  const allChecked = checkIds.length === ITEMS.length;
 
-  const checkAllFn = () => {
-    // 両方チェックされているときだけtrueの反転だから両方チェックされている時にfalse
-    const next = !(check1 && check2);
-    setCheck1(next);
-    setCheck2(next);
+  // 指定したidのチェック状態を切り替えるたい
+  const toggleCheck = (id: number) => {
+    setCheckIds((prev) => {
+      // チェック更新後のid配列を入れるための箱
+      let updated;
+
+      // すでに選択されている id なら配列から削除（チェックを外す）
+      if (prev.includes(id)) {
+        updated = prev.filter((value) => value !== id);
+      } else {
+        // 選択されていなければ配列に追加（チェックを入れる）
+        updated = [...prev, id];
+      }
+
+      // 1つ以上チェックされているか
+      const hasChecked = updated.length > 0;
+      // 全項目チェックされているか
+      const allChecked = updated.length === ITEMS.length;
+      // 一部選択状態（partial）かどうかを反映
+      updatePartial(hasChecked && !allChecked);
+
+      // 次のstateとして更新後の配列を返す
+      return updated;
+    });
   };
-
-  // パーシャルの
-  // 条件　選択されているチェックボックスが１つ以上かつ、全選択はされていない状態
-  // 何をするのか　項目の中身横棒にする
-
-  // const allCheck = check1 && check2 && check3;
-  // const isPartial = hasChecked && !allCheck;
-
-  // 項目チェックボックスを変数に入れて扱えるようにしたい。propsにないのでuseRef使う。
-  const allCheckBoxRef = useRef<HTMLInputElement | null>(null);
-  console.log(
-    "ほげ",
-    allCheckBoxRef.current && allCheckBoxRef.current.indeterminate,
-  );
-
-  // useEffect(() => {
-  //   console.log("allCheckBoxRef", allCheckBoxRef);
-  // }, []);
-
-  // useEffect(() => {
-  //   if (allCheckBoxRef.current) {
-  //     allCheckBoxRef.current.indeterminate = isPartial;
-  //   }
-  // }, [isPartial]);
 
   const updatePartial = (newIsPartial: boolean) => {
     if (allCheckBoxRef.current) {
@@ -48,6 +51,26 @@ export const CheckBoxApp = () => {
       allCheckBoxRef.current.indeterminate = newIsPartial;
     }
   };
+
+  // 問題:onはできるけどもう一度押した時にoffができない。これはoffの処理が入っていないため。分岐でoffにしたい時の処理も書く。
+  // すでに全選択なら → すべて解除
+  // まだ全選択でなければ → すべて選択
+  // partial（横棒）は必ず解除する //updatePartial(false)で;
+  const toggleAll = () => {
+    if (allChecked) {
+      // すでに全選択なら → すべて解除
+      setCheckIds([]);
+      updatePartial(false);
+    } else {
+      // まだ全選択でなければ → すべて選択
+      setCheckIds(ITEMS.map((item) => item.id));
+      updatePartial(false);
+    }
+  };
+
+  // indeterminate（横棒の中間状態）はpropsでは制御できないため（propsが生えてないから）useRefを使う。
+  const allCheckBoxRef = useRef<HTMLInputElement | null>(null);
+  allCheckBoxRef.current && allCheckBoxRef.current.indeterminate;
 
   return (
     <div className={styles.container}>
@@ -59,12 +82,12 @@ export const CheckBoxApp = () => {
               <input
                 ref={allCheckBoxRef}
                 type="checkbox"
-                checked={hasChecked}
-                onChange={checkAllFn}
+                checked={allChecked}
+                onChange={toggleAll}
               />
             </th>
             <th className={styles.cell}>項目</th>
-            <th className={styles.cell}>予測時間</th>
+            <th className={styles.cell}>所要時間</th>
           </tr>
         </thead>
 
@@ -73,38 +96,36 @@ export const CheckBoxApp = () => {
             <th className={styles.checkBoxColumn}>
               <input
                 type="checkbox"
-                checked={check1}
+                checked={checkIds.includes(ITEMS[0].id)}
                 onChange={() => {
-                  setCheck1(!check1);
-                  const newAllCheck = !check1 && check2;
-                  const newHasChecked = !check1 || check2;
-                  const newIsPartial = newHasChecked && !newAllCheck;
-
-                  updatePartial(newIsPartial);
+                  toggleCheck(ITEMS[0].id);
                 }}
               />
             </th>
-            <th className={styles.cell}>スクワット</th>
-            <th className={styles.cell}>120分</th>
+            <th className={styles.cell}>{ITEMS[0].task}</th>
+            <th className={styles.cell}>{ITEMS[0].time}</th>
           </tr>
 
           <tr className={styles.fuga}>
             <th className={styles.checkBoxColumn}>
               <input
                 type="checkbox"
-                checked={check2}
+                checked={checkIds.includes(ITEMS[1].id)}
+                // onChange={() => {
+                //   setCheck2(!check2);
+                //   const newAllCheck = check1 && !check2;
+                //   const newHasChecked = check1 || !check2;
+                //   const newIsPartial = newHasChecked && !newAllCheck;
+                //
+                //   updatePartial(newIsPartial);
+                // }}
                 onChange={() => {
-                  setCheck2(!check2);
-                  const newAllCheck = check1 && !check2;
-                  const newHasChecked = check1 || !check2;
-                  const newIsPartial = newHasChecked && !newAllCheck;
-
-                  updatePartial(newIsPartial);
+                  toggleCheck(ITEMS[1].id);
                 }}
               />
             </th>
-            <th className={styles.cell}>ダッシュ</th>
-            <th className={styles.cell}>120分</th>
+            <th className={styles.cell}>{ITEMS[1].task}</th>
+            <th className={styles.cell}>{ITEMS[1].time}</th>
           </tr>
         </tbody>
       </table>
@@ -116,3 +137,13 @@ export const CheckBoxApp = () => {
     </div>
   );
 };
+
+// useEffect(() => {
+//   console.log("allCheckBoxRef", allCheckBoxRef);
+// }, []);
+
+// useEffect(() => {
+//   if (allCheckBoxRef.current) {
+//     allCheckBoxRef.current.indeterminate = isPartial;
+//   }
+// }, [isPartial]);
