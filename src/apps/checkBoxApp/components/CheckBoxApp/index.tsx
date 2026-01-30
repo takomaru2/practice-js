@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import { FC, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 //  NEXT 型=>map?=>component
 type Item = {
   id: number;
@@ -16,17 +16,14 @@ const ITEMS: Item[] = [
 //コンポーネント化する時もこいつだけRef渡しているし、似ているけど責務違う気がする
 
 export const CheckBoxApp: FC = () => {
-  // number配列だから[0,1,2]みたいなデータ型
   const [checkIds, setCheckIds] = useState<number[]>([]);
 
-  // チェックが一つでもついているか
   const hasChecked = checkIds.length > 0;
-  // いくつチェックがついているか
   const count = checkIds.length;
-  // チェック項目の総数
   const total = ITEMS.length;
-  // 全部チェックされているかが入っているか
   const allChecked = checkIds.length === ITEMS.length;
+
+  const isPartial = hasChecked && !allChecked;
 
   // 指定したidのチェック状態を切り替えるたい
   const toggleCheck = (id: number): void => {
@@ -42,43 +39,30 @@ export const CheckBoxApp: FC = () => {
         updated = [...prev, id];
       }
 
-      // 1つ以上チェックされているか
-      const hasChecked = updated.length > 0;
-      // 全項目チェックされているか
-      const allChecked = updated.length === ITEMS.length;
-      // 一部選択状態（partial）かどうかを反映
-      updatePartial(hasChecked && !allChecked);
-
       // 次のstateとして更新後の配列を返す
       return updated;
     });
   };
 
-  const updatePartial = (newIsPartial: boolean): void => {
-    if (allCheckBoxRef.current) {
-      console.log("FUGA", newIsPartial);
-      allCheckBoxRef.current.indeterminate = newIsPartial;
-    }
-  };
-
-  // 問題:onはできるけどもう一度押した時にoffができない。これはoffの処理が入っていないため。分岐でoffにしたい時の処理も書く。
-  // すでに全選択なら → すべて解除
-  // まだ全選択でなければ → すべて選択
   // partial（横棒）は必ず解除する //updatePartial(false)で;
   const toggleAll = (): void => {
     if (allChecked) {
       // すでに全選択なら → すべて解除
       setCheckIds([]);
-      updatePartial(false);
     } else {
       // まだ全選択でなければ → すべて選択
       setCheckIds(ITEMS.map((item) => item.id));
-      updatePartial(false);
     }
   };
 
   // indeterminate（横棒の中間状態）はpropsでは制御できないため（propsが生えてないから）useRefを使う。
   const allCheckBoxRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (allCheckBoxRef.current !== null) {
+      allCheckBoxRef.current.indeterminate = isPartial;
+    }
+  }, [isPartial]);
 
   return (
     <div className={styles.container}>
