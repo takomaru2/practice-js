@@ -1,12 +1,21 @@
 import styles from "./index.module.scss";
-import { useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
+//  NEXT 型=>map?=>component
+type Item = {
+  id: number;
+  task: string;
+  time: string;
+};
 
-const ITEMS = [
+const ITEMS: Item[] = [
   { id: 1, task: "スクワット", time: "120分" },
   { id: 2, task: "ダッシュ", time: "120分" },
 ];
 
-export const CheckBoxApp = () => {
+//ちなみに最初の項目と所要時間みたいなところをITEMSに混ぜてないんだけど、これ混ぜるべきかな？
+//コンポーネント化する時もこいつだけRef渡しているし、似ているけど責務違う気がする
+
+export const CheckBoxApp: FC = () => {
   // number配列だから[0,1,2]みたいなデータ型
   const [checkIds, setCheckIds] = useState<number[]>([]);
 
@@ -20,7 +29,7 @@ export const CheckBoxApp = () => {
   const allChecked = checkIds.length === ITEMS.length;
 
   // 指定したidのチェック状態を切り替えるたい
-  const toggleCheck = (id: number) => {
+  const toggleCheck = (id: number): void => {
     setCheckIds((prev) => {
       // チェック更新後のid配列を入れるための箱
       let updated;
@@ -45,7 +54,7 @@ export const CheckBoxApp = () => {
     });
   };
 
-  const updatePartial = (newIsPartial: boolean) => {
+  const updatePartial = (newIsPartial: boolean): void => {
     if (allCheckBoxRef.current) {
       console.log("FUGA", newIsPartial);
       allCheckBoxRef.current.indeterminate = newIsPartial;
@@ -56,7 +65,7 @@ export const CheckBoxApp = () => {
   // すでに全選択なら → すべて解除
   // まだ全選択でなければ → すべて選択
   // partial（横棒）は必ず解除する //updatePartial(false)で;
-  const toggleAll = () => {
+  const toggleAll = (): void => {
     if (allChecked) {
       // すでに全選択なら → すべて解除
       setCheckIds([]);
@@ -70,7 +79,6 @@ export const CheckBoxApp = () => {
 
   // indeterminate（横棒の中間状態）はpropsでは制御できないため（propsが生えてないから）useRefを使う。
   const allCheckBoxRef = useRef<HTMLInputElement | null>(null);
-  allCheckBoxRef.current && allCheckBoxRef.current.indeterminate;
 
   return (
     <div className={styles.container}>
@@ -111,14 +119,6 @@ export const CheckBoxApp = () => {
               <input
                 type="checkbox"
                 checked={checkIds.includes(ITEMS[1].id)}
-                // onChange={() => {
-                //   setCheck2(!check2);
-                //   const newAllCheck = check1 && !check2;
-                //   const newHasChecked = check1 || !check2;
-                //   const newIsPartial = newHasChecked && !newAllCheck;
-                //
-                //   updatePartial(newIsPartial);
-                // }}
                 onChange={() => {
                   toggleCheck(ITEMS[1].id);
                 }}
