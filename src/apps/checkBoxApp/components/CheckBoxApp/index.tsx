@@ -1,6 +1,8 @@
 import styles from "./index.module.scss";
 import { FC, useEffect, useRef, useState } from "react";
-//  NEXT 型=>map?=>component
+import { CheckBox } from "../CheckBox";
+import { AllCheckBox } from "../AllCheckBox";
+//  NEXT map?=>component
 type Item = {
   id: number;
   task: string;
@@ -18,6 +20,7 @@ const ITEMS: Item[] = [
 export const CheckBoxApp: FC = () => {
   const [checkIds, setCheckIds] = useState<number[]>([]);
 
+  // todo: ロジック全体のhooks化の検討
   const hasChecked = checkIds.length > 0;
   const count = checkIds.length;
   const total = ITEMS.length;
@@ -29,6 +32,7 @@ export const CheckBoxApp: FC = () => {
   const toggleCheck = (id: number): void => {
     setCheckIds((prev) => {
       // チェック更新後のid配列を入れるための箱
+      // todo: let使わない形でかけたら
       let updated;
 
       // すでに選択されている id なら配列から削除（チェックを外す）
@@ -51,6 +55,7 @@ export const CheckBoxApp: FC = () => {
       setCheckIds([]);
     } else {
       // まだ全選択でなければ → すべて選択
+      // todo: mapを定数化してコンポーネント外に出す。
       setCheckIds(ITEMS.map((item) => item.id));
     }
   };
@@ -59,11 +64,13 @@ export const CheckBoxApp: FC = () => {
   const allCheckBoxRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
+    //型ガード！！
     if (allCheckBoxRef.current !== null) {
       allCheckBoxRef.current.indeterminate = isPartial;
     }
   }, [isPartial]);
 
+  // todo: mapは全体でcomponent化はinputだけしてみるとか
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>モーニングルーティン</h1>
@@ -71,11 +78,10 @@ export const CheckBoxApp: FC = () => {
         <thead>
           <tr className={styles.row}>
             <th className={styles.checkBoxColumn}>
-              <input
-                ref={allCheckBoxRef}
-                type="checkbox"
+              <AllCheckBox
                 checked={allChecked}
                 onChange={toggleAll}
+                ref={allCheckBoxRef}
               />
             </th>
             <th className={styles.cell}>項目</th>
@@ -84,33 +90,20 @@ export const CheckBoxApp: FC = () => {
         </thead>
 
         <tbody>
-          <tr className={styles.fuga}>
-            <th className={styles.checkBoxColumn}>
-              <input
-                type="checkbox"
-                checked={checkIds.includes(ITEMS[0].id)}
-                onChange={() => {
-                  toggleCheck(ITEMS[0].id);
-                }}
-              />
-            </th>
-            <th className={styles.cell}>{ITEMS[0].task}</th>
-            <th className={styles.cell}>{ITEMS[0].time}</th>
-          </tr>
-
-          <tr className={styles.fuga}>
-            <th className={styles.checkBoxColumn}>
-              <input
-                type="checkbox"
-                checked={checkIds.includes(ITEMS[1].id)}
-                onChange={() => {
-                  toggleCheck(ITEMS[1].id);
-                }}
-              />
-            </th>
-            <th className={styles.cell}>{ITEMS[1].task}</th>
-            <th className={styles.cell}>{ITEMS[1].time}</th>
-          </tr>
+          {ITEMS.map((item) => (
+            <tr className={styles.fuga} key={item.id}>
+              <th className={styles.checkBoxColumn}>
+                <CheckBox
+                  checked={checkIds.includes(item.id)}
+                  onChange={() => {
+                    toggleCheck(item.id);
+                  }}
+                />
+              </th>
+              <td className={styles.cell}>{item.task}</td>
+              <td className={styles.cell}>{item.time}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
       {hasChecked && (
@@ -121,13 +114,3 @@ export const CheckBoxApp: FC = () => {
     </div>
   );
 };
-
-// useEffect(() => {
-//   console.log("allCheckBoxRef", allCheckBoxRef);
-// }, []);
-
-// useEffect(() => {
-//   if (allCheckBoxRef.current) {
-//     allCheckBoxRef.current.indeterminate = isPartial;
-//   }
-// }, [isPartial]);
