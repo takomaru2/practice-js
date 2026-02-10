@@ -3,16 +3,14 @@ import { FC } from "react";
 import { CheckBox } from "../CheckBox";
 import { AllCheckBox } from "../AllCheckBox";
 import { useCheckBoxGroup } from "../../hooks/useCheckBoxGroup.ts";
-
-export type Item = {
-  id: number;
-  task: string;
-  time: string;
-};
+import { Item } from "../../types";
 
 const ITEMS: Item[] = [
   { id: 1, task: "スクワット", time: "120分" },
   { id: 2, task: "ダッシュ", time: "120分" },
+  { id: 3, task: "ダッシュ", time: "120分" },
+  { id: 4, task: "ダッシュ", time: "120分" },
+  { id: 5, task: "ダッシュ", time: "120分" },
 ];
 
 const total = ITEMS.length;

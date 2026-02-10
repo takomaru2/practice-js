@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Item } from "../components/CheckBoxApp";
+import { Item } from "../types";
 
+// Itemのimportが。親からのimportではなくてtypesの中からimportしたい。なぜなら型が親コンポーネントにあるということは親に依存しているから。
 export const useCheckBoxGroup = (ITEMS: Item[]) => {
   const [checkIds, setCheckIds] = useState<number[]>([]);
 
@@ -29,7 +30,7 @@ export const useCheckBoxGroup = (ITEMS: Item[]) => {
   };
 
   // indeterminate（横棒の中間状態）はpropsでは制御できないため（propsが生えてないから）useRefを使う。
-  const allCheckBoxRef = useRef<HTMLInputElement | null>(null);
+  const allCheckBoxRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     //型ガード！！
