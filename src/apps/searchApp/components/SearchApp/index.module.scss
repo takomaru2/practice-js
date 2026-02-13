@@ -20,15 +20,65 @@
   border-radius: 8px;
   transition: border-color 0.2s ease;
   box-sizing: border-box;
+  &:focus {
+    border-color: #06c;
+  }
+  &::placeholder {
+    color: gray;
+  }
 }
 
-.postHeader {
-  font-size: 12px;
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .reviewCard {
   background: #f5f5f5;
+
   padding: 0.75rem;
   border-left: 3px solid #ddd;
   border-radius: 2px;
+}
+
+.reviewCard:hover {
+  background-color: #eee;
+  transition: background-color 0.2s ease;
+}
+
+.postHeader {
+  font-size: 12px;
+  display: flex;
+  gap: 12px;
+  line-height: 1.4;
+}
+
+.postNumber {
+  font-weight: 600;
+}
+
+.postNumber::after {
+  content: ":";
+}
+
+.postName {
+  font-weight: 600;
+  color: #117743;
+}
+
+.postDate {
+  color: #666;
+}
+
+.postId {
+  color: #06c;
+  font-family: monospace;
+}
+
+.content {
+  font-size: 12px;
+  font-weight: lighter;
+  line-height: 24px;
+  white-space: pre-wrap;
 }
