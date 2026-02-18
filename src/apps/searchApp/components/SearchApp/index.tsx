@@ -1,7 +1,7 @@
 import styles from "./index.module.scss";
 import { useState } from "react";
 
-const Array = [
+const posts = [
   {
     number: 132,
     name: "本当にあった怖い名無し",
@@ -111,11 +111,10 @@ export const SearchApp = () => {
       </div>
       <div className={styles.reviewList}>
         {/*mapはindexも引数で渡せれる*/}
-        {Array.map((obj, i) => {
-          const showCard3 =
-            Array[i].name.includes(keyword) ||
-            Array[i].content.includes(keyword);
-          if (showCard3) {
+        {posts.map((obj) => {
+          const isMatched =
+            obj.name.includes(keyword) || obj.content.includes(keyword);
+          if (isMatched) {
             return (
               <div className={styles.reviewCard}>
                 <div className={styles.postHeader}>
