@@ -94,9 +94,15 @@ const posts = [
   },
 ];
 
+[1].filter((a) => a);
+
 export const SearchApp = () => {
   // まずはstateが必要。inputのplaceholderに文字が入力されているかのstate
   const [keyword, setKeyword] = useState("");
+
+  const filteredPosts = posts.filter((post) => {
+    return post.name.includes(keyword) || post.content.includes(keyword);
+  });
 
   return (
     <div className={styles.container}>
@@ -109,14 +115,28 @@ export const SearchApp = () => {
           onChange={(event) => setKeyword(event.target.value)}
         ></input>
       </div>
+      {/*数字の部分を可変にしたい下のisMatchedみたいなのを作り、そのlengthを表示すれば良い*/}
+      {/*入力されていたら出る inputにkeywordあれば*/}
+
+      {keyword.length >= 1 && (
+        <div className={styles.resultInfo}>
+          {filteredPosts.length}件の書き込みが見つかりました
+        </div>
+      )}
+
       <div className={styles.reviewList}>
-        {/*mapはindexも引数で渡せれる*/}
+        {filteredPosts.length === 0 && (
+          <div className={styles.noResults}>
+            該当する書き込みが見つかりませんでした
+          </div>
+        )}
+
         {posts.map((obj) => {
           const isMatched =
             obj.name.includes(keyword) || obj.content.includes(keyword);
           if (isMatched) {
             return (
-              <div className={styles.reviewCard}>
+              <div className={styles.postCard}>
                 <div className={styles.postHeader}>
                   <span className={styles.postNumber}>{obj.number}</span>
                   <span className={styles.postName}>{obj.name}</span>

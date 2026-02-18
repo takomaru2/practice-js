@@ -28,13 +28,22 @@
   }
 }
 
+.resultInfo {
+  color: #6c757d;
+}
+
+.noResults {
+  color: #6c757d;
+  text-align: center;
+}
+
 .reviewList {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-.reviewCard {
+.postCard {
   background: #f5f5f5;
 
   padding: 0.75rem;
@@ -42,7 +51,7 @@
   border-radius: 2px;
 }
 
-.reviewCard:hover {
+.postCard:hover {
   background-color: #eee;
   transition: background-color 0.2s ease;
 }
