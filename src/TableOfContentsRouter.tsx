@@ -27,6 +27,7 @@ const PAGES: Page[] = [
   { path: "/modal-app", name: "モーダル", level: "beginner" },
   { path: "/progress-app", name: "プログレスバー", level: "beginner" },
   { path: "/calculator-app", name: "計算フォーム", level: "intermediate" },
+  { path: "/search-app", name: "2chコピペ検索", level: "intermediate" },
 ];
 
 const beginnerPages = PAGES.filter((page) => page.level === "beginner");
