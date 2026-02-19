@@ -1,5 +1,6 @@
 import styles from "./index.module.scss";
 import { useState } from "react";
+import { PostCard } from "../PostCard";
 
 const posts = [
   {
@@ -136,15 +137,13 @@ export const SearchApp = () => {
             obj.name.includes(keyword) || obj.content.includes(keyword);
           if (isMatched) {
             return (
-              <div className={styles.postCard}>
-                <div className={styles.postHeader}>
-                  <span className={styles.postNumber}>{obj.number}</span>
-                  <span className={styles.postName}>{obj.name}</span>
-                  <span className={styles.postDate}> {obj.dateTime}</span>
-                  <span className={styles.postId}>ID:{obj.id}</span>
-                </div>
-                <div className={styles.content}>{obj.content}</div>
-              </div>
+              <PostCard
+                number={obj.number}
+                name={obj.name}
+                dateTime={obj.dateTime}
+                id={obj.id}
+                content={obj.content}
+              />
             );
           } else {
             return null;
