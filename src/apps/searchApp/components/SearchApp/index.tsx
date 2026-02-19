@@ -132,22 +132,17 @@ export const SearchApp = () => {
           </div>
         )}
 
-        {posts.map((obj) => {
-          const isMatched =
-            obj.name.includes(keyword) || obj.content.includes(keyword);
-          if (isMatched) {
-            return (
-              <PostCard
-                number={obj.number}
-                name={obj.name}
-                dateTime={obj.dateTime}
-                id={obj.id}
-                content={obj.content}
-              />
-            );
-          } else {
-            return null;
-          }
+        {filteredPosts.map((post) => {
+          return (
+            <PostCard
+              key={post.id}
+              number={post.number}
+              name={post.name}
+              dateTime={post.dateTime}
+              id={post.id}
+              content={post.content}
+            />
+          );
         })}
       </div>
     </div>
