@@ -95,14 +95,17 @@ const posts = [
   },
 ];
 
-[1].filter((a) => a);
-
 export const SearchApp = () => {
   // まずはstateが必要。inputのplaceholderに文字が入力されているかのstate
   const [keyword, setKeyword] = useState("");
 
+  const lowerKeyword = keyword.toLowerCase();
+
   const filteredPosts = posts.filter((post) => {
-    return post.name.includes(keyword) || post.content.includes(keyword);
+    return (
+      post.name.toLowerCase().includes(lowerKeyword) ||
+      post.content.toLowerCase().includes(lowerKeyword)
+    );
   });
 
   return (
