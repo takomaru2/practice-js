@@ -1,10 +1,18 @@
 import { MouseEventHandler, useState } from "react";
 
+type Task = {
+  id: number;
+  name: string;
+};
+
+// taskNamesが['a','b','c']となっていったのが
+// [{id:1,name:あああ},{id:2,name:いいい}]となりましたとさ
+
 export const TodoApp = () => {
   const [inputtingTaskName, setInputtingTaskName] = useState(""); // 新しいタスクの入力値
-  const [taskNames, setTaskNames] = useState<string[]>([]); // 保存しているタスク一覧
+  const [taskNames, setTaskNames] = useState<Task[]>([]); // 保存しているタスク一覧
   const [editingText, setEditingText] = useState(""); // 編集中inputの一時的な値
-  const [editingItem, setEditingItem] = useState<string | null>(null); // 編集中のタスクを特定するための値。文字列だと一意ではないのでidが欲しい
+  const [editingTaskId, setEditingTaskId] = useState<number | null>(null); // 編集中のタスクを特定するための値。文字列だと一意ではないのでidが欲しい
 
   type TaskProps = {
     taskName: string;
@@ -55,27 +63,36 @@ export const TodoApp = () => {
   };
 
   const handleCancel = () => {
-    setEditingItem(null);
+    setEditingTaskId(null);
   };
 
   const handleSave = () => {
+    // 空白とか消すよ
+    if (editingText.trim() === "") return;
+
+    // taskは{id:1,name:'hoge'}みたいなobj
+
     const updated = taskNames.map((task) =>
-      task === editingItem ? editingText : task,
+      // taskが{ id: 1, name: "あああ" }がこれだと展開すると { id: 1, name: "あああ" }
+      // もしこのタスクのidが編集中のタスクのidと同じなら、このタスクの内容を全部コピーして
+      // nameの部分だけ編集中のテキストに置き換えた新しいオブジェクトを作る。そうでなければ元のタスクをそのまま使う。
+      task.id === editingTaskId ? { ...task, name: editingText } : task,
     );
     setTaskNames(updated);
-    setEditingItem(null);
+    setEditingTaskId(null);
   };
 
-  const handleDelete = (taskName: string) => {
+  const handleDelete = (id: number) => {
     const result = taskNames.filter((task) => {
-      return task !== taskName;
+      // task.idが削除対象のidと違う場合だけ残sう（true なら残る、false なら削除される）
+      return task.id !== id;
     });
     setTaskNames(result);
   };
 
-  const handleEdit = (taskName: string) => {
-    setEditingItem(taskName);
-    setEditingText(taskName);
+  const handleEdit = (id: number, name: string) => {
+    setEditingTaskId(id);
+    setEditingText(name);
   };
 
   return (
@@ -92,8 +109,12 @@ export const TodoApp = () => {
         onClick={() => {
           if (inputtingTaskName !== "") {
             setInputtingTaskName("");
-            taskNames.push(inputtingTaskName);
-            setTaskNames(taskNames);
+            // todo: 日報に書こう
+            setTaskNames([
+              ...taskNames,
+              // ランダムなid準備するのに使ってみた
+              { id: Date.now(), name: inputtingTaskName },
+            ]);
           }
         }}
       >
@@ -103,8 +124,8 @@ export const TodoApp = () => {
       {taskNames.length === 0 && <div>タスクがありません</div>}
 
       {taskNames.length > 0 &&
-        taskNames.map((taskName) => {
-          if (editingItem === taskName) {
+        taskNames.map((task) => {
+          if (editingTaskId === task.id) {
             return (
               <EditTask
                 editingText={editingText}
@@ -116,9 +137,10 @@ export const TodoApp = () => {
 
           return (
             <Task
-              taskName={taskName}
-              onDelete={() => handleDelete(taskName)}
-              onEdit={() => handleEdit(taskName)}
+              taskName={task.name}
+              onDelete={() => handleDelete(task.id)}
+              // handleEditはidでどれを編集UIにするか、nameで編集UIに元の文字列を表示するのに必要だから引数は２つとも必要なのだ
+              onEdit={() => handleEdit(task.id, task.name)}
             />
           );
         })}
